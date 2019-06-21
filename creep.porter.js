@@ -18,14 +18,20 @@ module.exports =
 		}
 		else
 		{
-			var Home = Game.spawns["Home"];
-			if(Home.energy < Home.energyCapacity)
+			var dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+				{
+					filter: function(s)
+					{
+						return s.structureType == STRUCTURE_EXTENSION && s.energyCapacity - s.energy > 0;
+					}
+				});
+			if(dest)
 			{
-				switch(creep.transfer(Home, RESOURCE_ENERGY))
+				switch(creep.transfer(dest, RESOURCE_ENERGY))
 				{
 					case ERR_NOT_IN_RANGE:
 					{
-						creep.moveTo(Home);
+						creep.moveTo(dest);
 					}
 					break;
 
@@ -38,7 +44,7 @@ module.exports =
 			}
 			else
 			{
-				require("creep.porter").run(creep);
+				require("creep.upgrader").run(creep);
 			}
 		}
 	},

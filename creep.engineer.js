@@ -2,6 +2,8 @@ module.exports =
 {
 	run: function(creep)
 	{
+		var roleUpgrader = require("creep.upgrader");
+
 		if(!creep.memory.bussy)
 		{
 			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
@@ -38,7 +40,7 @@ module.exports =
 			}
 			else
 			{
-				require("creep.porter").run(creep);
+				roleUpgrader.run(creep);
 			}
 		}
 	},

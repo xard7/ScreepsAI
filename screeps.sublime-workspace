@@ -223,51 +223,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "main.js",
-			"settings":
-			{
-				"buffer_size": 578,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "spawn_manager.js",
-			"settings":
-			{
-				"buffer_size": 2312,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "creep.builder.js",
-			"settings":
-			{
-				"buffer_size": 829,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "creep.harvester.js",
-			"settings":
-			{
-				"buffer_size": 742,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "creep.upgrader.js",
-			"settings":
-			{
-				"buffer_size": 680,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -313,10 +268,19 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/screeps.sublime-workspace",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/screeps.sublime-project",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.porter.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.builder.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.harvester.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.upgrader.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.engineer.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/main.js",
+		"/F/Steam/steamapps/common/Screeps/server/.screepsrc",
+		"/F/Steam/steamapps/common/Screeps/server/db.json",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/screeps.com/default/main.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/spawner.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Creep.js",
-		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/main.js",
 		"/F/Steam/steamapps/common/Screeps/server/mods.json",
 		"/F/Steam/steamapps/common/Screeps/server/package/package.json",
 		"/F/Steam/steamapps/common/Screeps/server/mods.example.json",
@@ -431,16 +395,7 @@
 		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/proj_punisher_grenade.nut",
 		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_nobitsura.nut",
 		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/scripts/script_play_video.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_punisher_revolvers_damage.nut",
-		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/agent.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/pistol.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/shotgun_sawed_off.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/revolver.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/katana_damage_script.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_punisher_movement.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_max_speed_inc.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_vortex_radius.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_medkit_overheal.nut"
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_punisher_revolvers_damage.nut"
 	],
 	"find":
 	{
@@ -451,7 +406,6 @@
 		"height": 234.0,
 		"where_history":
 		[
-			""
 		]
 	},
 	"find_state":
@@ -459,7 +413,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"DUPA"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -477,149 +430,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 578,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								408,
-								408
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "spawn_manager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2312,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1426,
-								1426
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "creep.builder.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 829,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								813,
-								813
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "creep.harvester.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 742,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								726,
-								726
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "creep.upgrader.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 680,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								350,
-								350
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -676,8 +488,48 @@
 		"selected_items":
 		[
 			[
+				"engin",
+				"creep.engineer.js"
+			],
+			[
+				"porter",
+				"creep.porter.js"
+			],
+			[
+				"harvest",
+				"creep.harvester.js"
+			],
+			[
+				"build",
+				"creep.builder.js"
+			],
+			[
 				"builder",
 				"creep.builder.js"
+			],
+			[
+				"port",
+				"creep.porter.js"
+			],
+			[
+				"harve",
+				"creep.harvester.js"
+			],
+			[
+				"harv",
+				"creep.harvester.js"
+			],
+			[
+				"prototypes",
+				"prototypes.js"
+			],
+			[
+				"en",
+				"creep.engineer.js"
+			],
+			[
+				"main",
+				"main.js"
 			],
 			[
 				"creep",
@@ -1146,46 +998,6 @@
 			[
 				"medkit_over",
 				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_medkit_overheal.nut"
-			],
-			[
-				"hp_lea",
-				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_HP_leach.nut"
-			],
-			[
-				"wc_acid",
-				"scripts\\gameplay\\base_templates\\weapons\\cards\\wc_acidDmg.nut"
-			],
-			[
-				"agent.nut",
-				"scripts\\main\\gameSystem\\gameObjects\\agent.nut"
-			],
-			[
-				"elemental_status_",
-				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_elemental_status_chance.nut"
-			],
-			[
-				"place",
-				"scripts\\main\\gameSystem\\gameObjects\\placeable.nut"
-			],
-			[
-				"script_class_t",
-				"scripts\\gameplay\\base_templates\\player\\playerclasses\\script_class_template.nut"
-			],
-			[
-				"medkit_hot",
-				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_medkit_hot.nut"
-			],
-			[
-				"well_hp",
-				"scripts\\gameplay\\base_templates\\interactive\\well_hp.nut"
-			],
-			[
-				"medkit_li",
-				"scripts\\gameplay\\base_templates\\collectable\\medkit_light.nut"
-			],
-			[
-				"gameplay\\debg\\spawn",
-				"scripts\\gameplay\\debug\\spawn_item.nut"
 			]
 		],
 		"width": 0.0
@@ -1219,7 +1031,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 203.0,
 	"status_bar_visible": true,
 	"template_settings":
