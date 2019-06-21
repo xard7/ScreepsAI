@@ -1,0 +1,1228 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"FIND_SP",
+				"FIND_MY_SPAWNS\t(num)"
+			],
+			[
+				"numb",
+				"numberOfBuilders\t(?)"
+			],
+			[
+				"number",
+				"numberOfUpgraders\t(?)"
+			],
+			[
+				"Spawn",
+				"SpawnManager\t(?)"
+			],
+			[
+				"minimal",
+				"minimalNumberOfHarverters"
+			],
+			[
+				"numberOf",
+				"numberOfHarvesters"
+			],
+			[
+				"ERR_NOT_IN",
+				"ERR_NOT_IN_RANGE\t(num)"
+			],
+			[
+				"spawnC",
+				"spawnCreep(body, name, memory)"
+			],
+			[
+				"look",
+				"lookAt(x, y)"
+			],
+			[
+				"Add",
+				"AddCardModifier"
+			],
+			[
+				"Script",
+				"ScriptActivate"
+			],
+			[
+				"agent",
+				"agentIDs"
+			],
+			[
+				"extendDur",
+				"extendDurationTime"
+			],
+			[
+				"Addit",
+				"AdditionalData"
+			],
+			[
+				"Family",
+				"FamilySpecial"
+			],
+			[
+				"print",
+				"printVal"
+			],
+			[
+				"skill",
+				"skillToSave"
+			],
+			[
+				"quest",
+				"questTemplate"
+			],
+			[
+				"GetTem",
+				"GetTemplate"
+			],
+			[
+				"Create",
+				"CreateFlattenTemplate"
+			],
+			[
+				"GetObject",
+				"GetObjectByNameIncludingParts"
+			],
+			[
+				"GetFinalStat",
+				"GetFinalStats"
+			],
+			[
+				"null",
+				"IsNull"
+			],
+			[
+				"q_Weapon",
+				"q_WeaponCardsInfo"
+			],
+			[
+				"usable",
+				"usableObj"
+			],
+			[
+				"qm_",
+				"qm_MoveAgent"
+			],
+			[
+				"update",
+				"updateParams"
+			],
+			[
+				"GetParameterS",
+				"GetParameterFromObjectPosition"
+			],
+			[
+				"MsgAme",
+				"MsgActivateAnimPathReceive"
+			],
+			[
+				"qm_Weapon",
+				"qm_WeaponModeActive"
+			],
+			[
+				"EDamage",
+				"EDamageType"
+			],
+			[
+				"per",
+				"perpetrator"
+			],
+			[
+				"GetTemplate",
+				"GetTemplateName"
+			],
+			[
+				"curr",
+				"currentWeaponName"
+			],
+			[
+				"currentWeapon",
+				"currentWeaponName"
+			],
+			[
+				"Print",
+				"PrintStack"
+			],
+			[
+				"qm_Ela",
+				"qm_ElapsedTime"
+			],
+			[
+				"qm_Dissolve",
+				"qm_Dissolve_PlayerMP"
+			],
+			[
+				"qm_Script",
+				"qm_ScriptScore"
+			],
+			[
+				"RUN",
+				"RUN_APPLICATION"
+			],
+			[
+				"qm_Cant",
+				"qm_CantDieHpRatio"
+			],
+			[
+				"GetById",
+				"GetById"
+			],
+			[
+				"GetForm",
+				"GetFromId"
+			],
+			[
+				"q_Wor",
+				"q_World"
+			],
+			[
+				"strFun",
+				"strFunc"
+			],
+			[
+				"GetTe",
+				"GetTemplate"
+			],
+			[
+				"GetF",
+				"GetFromId"
+			],
+			[
+				"q",
+				"q_World"
+			],
+			[
+				"nextSignal",
+				"nextSignalTime"
+			],
+			[
+				"qm_BossF",
+				"qm_BossFightPartId"
+			],
+			[
+				"compared",
+				"comparedPerpetrator"
+			],
+			[
+				"forceInfo",
+				"forceInfo"
+			],
+			[
+				"achieveme",
+				"achievement_headshot"
+			],
+			[
+				"dist",
+				"distMax"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.js",
+			"settings":
+			{
+				"buffer_size": 578,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "spawn_manager.js",
+			"settings":
+			{
+				"buffer_size": 2312,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "creep.builder.js",
+			"settings":
+			{
+				"buffer_size": 829,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "creep.harvester.js",
+			"settings":
+			{
+				"buffer_size": 742,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "creep.upgrader.js",
+			"settings":
+			{
+				"buffer_size": 680,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"run",
+				"Build With: C++ Single File - Run"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default"
+	],
+	"file_history":
+	[
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/screeps.com/default/main.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/spawner.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Creep.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/main.js",
+		"/F/Steam/steamapps/common/Screeps/server/mods.json",
+		"/F/Steam/steamapps/common/Screeps/server/package/package.json",
+		"/F/Steam/steamapps/common/Screeps/server/mods.example.json",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Calculations/HMHealthRegenCalculation.cpp",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Calculations/HMHealthRegenCalculation.h",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Executions/HMHealthRegenExecution.cpp",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Executions/HMHealthRegenExecution.h",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Executions/HMAIRegenExecution.h",
+		"/Z/HM/HighMoon/Source/HighMoon/Abilities/Executions/HMAIRegenExecution.cpp",
+		"/C/Users/Adam/AppData/Local/Temp/p4v/ADAM-PC_192.168.0.6_1666/UE4/dev/Engine/Source/Runtime/HogRuntime/Private/HogRuntimeBlueprintLibrary#1.cpp",
+		"/C/Users/Adam/AppData/Local/Temp/p4v/ADAM-PC_192.168.0.6_1666/UE4/dev/Engine/Source/Runtime/HogRuntime/Private/HogRuntimeBlueprintLibrary#1.h",
+		"/C/Program Files (x86)/Activision/Call of Duty 4 - Modern Warfare/main/dedicated.cfg",
+		"/C/Program Files (x86)/Activision/Call of Duty 4 - Modern Warfare/main/cod4-server-config.cfg",
+		"/Z/HM/HighMoon/Content/Splash/EdSplash.png",
+		"/C/Users/Adam/Pictures/splash/HighMoonEditor.bat",
+		"/C/Perforce/SWA/HM/Engine/Source/ThirdParty/IntelMetricsDiscovery/MetricsDiscoveryHelper/samples/range_sample_dx11/imgui/stb_truetype.h",
+		"/Z/HM/HighMoon/Source/HighMoon/Attributes/HMMovementAttributeSet.cpp",
+		"/Z/HM/HighMoon/Source/HighMoon/Attributes/HMMovementAttributeSet.h",
+		"/Z/HM/HighMoonEditorDebug.bat",
+		"/Z/HM/HighMoon/Source/HighMoon/AI/Decorators/HMBTDecorator_CheckAttrib.cpp",
+		"/F/Perforce/Temporary/HM/HighMoonEditor.bat",
+		"/Z/HM/HighMoonEditor.bat",
+		"/Z/HM/HighMoon/Source/HighMoon/AI/Decorators/HMBTDecorator_CheckAttrib.h",
+		"/Z/HM/Engine/Plugins/Gameplay/HogAI/Source/HogAI/Private/Decorators/HogBTDecorator_CheckAttrib.cpp",
+		"/Z/HM/Engine/Plugins/Gameplay/HogAI/Source/HogAI/Public/Decorators/HogBTDecorator_CheckAttrib.h",
+		"/Z/HM/HighMoon/Source/HighMoon/AI/DataProvider/TableRows/HMAIDataProvider_StatsData_TableRowBase_Gangbang.h",
+		"/F/Perforce/Temporary/HM/HogAIMeleeDamageExecutionCalculation.h",
+		"/F/Perforce/Temporary/HM/HogAIMeleeDamageExecutionCalculation.cpp",
+		"/F/Perforce/Temporary/HM/HogAIDataProvider_StatsData_TableRowBase_Ranged.h",
+		"/F/Perforce/Temporary/HogGangBangProjectileExecutionCalculation.h",
+		"/F/Perforce/Temporary/HogGangBangProjectileExecutionCalculation.cpp",
+		"/F/Perforce/Temporary/HogLightSkilExecutionCalculation.cpp",
+		"/F/Git/Strategy/Strategy.gmx/scripts/pack_production_data.gml",
+		"/Z/HM/GenerateProjectFiles.bat",
+		"/Z/HM/HighMoon/Plugins/HogBTTask_ExecuteAbilityByTag.cpp",
+		"/Z/HM/HighMoon/Plugins/HogBTTask_ExecuteAbilityByTag.h",
+		"/Z/HM/.p4ignore.txt",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/scripts/script_tpp_end_of_level.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/world.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/area.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/interactive/quests/swa_1_3_tut/swa_1_3_tut.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/interactive/npc_hostile.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/debug/quest_finish.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/debug/get_challenges.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/agentPlayer.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/w0_player.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/chainsaw_base.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/chainsaw_sword.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/chainsaw_sword_preorder.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/weapon.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/script_class_template.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/akimbo/script_class_akimbo.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/modes/melee.inc",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/w1_sword.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_hobo.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_hoji.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/sharpshooter/script_class_sharpshooter.nut",
+		"/Z/roadhog3_swa/src/engine/UIModelsBindings.cpp",
+		"/Z/roadhog3_swa/src/GameSparksCloudCode/swa/modules/WEAPONS_BLUEPRINTS.js",
+		"/Z/roadhog3_swa/src/GameSparksCloudCode/swa/event/StartCrafting.js",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/player.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/stats/objectStats.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/survival/collectable/survival_weapon.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/turret_dummy.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/turret.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/menu/inventory/ui_inventory_list_gems.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/player/user.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/debug/ammo_double.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/weapon_upgrade_spawner.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/modes/default_alt.inc",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/interactive/npc_interaction.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_gozu_axe.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/scripts/script_special_attack_global_cooldown.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/brawler/script_class_brawler.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/monkeyboy/script_class_monkeyboy.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/script_class_punisher.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/script_class_ronin.nut",
+		"/Z/roadhog3_swa/bin/local_sw2/profiles/default/config.cfg",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_sting.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_overhead.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/brawler/cast_attack_forward_brawler.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_stig.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_vortex.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_left.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_right.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/base/Weapon.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_force_slash.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_forward.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_push_ronin.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/brawler/cast_attack_back_brawler.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_vortex.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_force_slash.nut",
+		"/C/Users/Adam/Desktop/pit/cast_attack_force_slash_2.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_stig.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/main/gameSystem/player/userLocal.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_special_attack.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_dual_chienese.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/main/gameSystem/gameObjects/agentPlayerLocal.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/dark_force/special_move_attack_uppercut.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/blendtree_player_body.inc",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/interactive/quests/swa_tut_gs/quest_swa_tut_gs_item_useable_map.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_back.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/enemy/mode_katana_slash.inc",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/katana_force_slash.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/proj_punisher_stasis.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/cast_stasis_punisher.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_stasis_damage.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_hp_leach.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_stasis_duration.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/proj_punisher_grenade.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_nobitsura.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/scripts/script_play_video.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_punisher_revolvers_damage.nut",
+		"/Z/roadhog3_swa/bin/data_common/scripts/main/gameSystem/gameObjects/agent.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/pistol.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/shotgun_sawed_off.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/revolver.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/katana_damage_script.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_punisher_movement.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_max_speed_inc.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_vortex_radius.nut",
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_medkit_overheal.nut"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 234.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"DUPA"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								408,
+								408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "spawn_manager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2312,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1426,
+								1426
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "creep.builder.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								813,
+								813
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "creep.harvester.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "creep.upgrader.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 680,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								350,
+								350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 294.0
+	},
+	"output.find_results":
+	{
+		"height": 141.0
+	},
+	"pinned_build_system": "Packages/User/ShadowWarrior.sublime-build",
+	"project": "screeps.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"builder",
+				"creep.builder.js"
+			],
+			[
+				"creep",
+				"creep.upgrader.js"
+			],
+			[
+				"spawn",
+				"spawn_manager.js"
+			],
+			[
+				"spawner",
+				"spawner.js"
+			],
+			[
+				"AdamDeb",
+				"src\\GameSparksCloudCode\\swa\\event\\AdamDebug.js"
+			],
+			[
+				"regist",
+				"src\\GameSparksCloudCode\\swa\\modules\\REGISTER.js"
+			],
+			[
+				"area.nut",
+				"scripts\\main\\gameSystem\\gameObjects\\area.nut"
+			],
+			[
+				"agentPlayer",
+				"scripts\\main\\gameSystem\\gameObjects\\agentPlayer.nut"
+			],
+			[
+				"swa_tut_gs",
+				"scripts\\gameplay\\base_templates\\interactive\\quests\\swa_tut_gs\\swa_tut_gs.nut"
+			],
+			[
+				"script_end",
+				"scripts\\gameplay\\base_templates\\scripts\\script_tpp_end_of_level.nut"
+			],
+			[
+				"world",
+				"scripts\\main\\gameSystem\\world.nut"
+			],
+			[
+				"swa_1_3",
+				"scripts\\gameplay\\base_templates\\interactive\\quests\\swa_1_3_tut\\swa_1_3_tut.nut"
+			],
+			[
+				"chainsaw_sword",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\chainsaw_sword.nut"
+			],
+			[
+				"w0_player",
+				"scripts\\gameplay\\base_templates\\weapons\\w0_player.nut"
+			],
+			[
+				"chainsaw_base",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\chainsaw_base.nut"
+			],
+			[
+				"mele.inc",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\modes\\melee.inc"
+			],
+			[
+				"melee_katana_ho",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\melee\\melee_katana_hobo.nut"
+			],
+			[
+				"w1_sword",
+				"scripts\\gameplay\\base_templates\\weapons\\w1_sword.nut"
+			],
+			[
+				"melee_katana",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\melee\\melee_katana.nut"
+			],
+			[
+				"sharpshoter script",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\sharpshooter\\script_class_sharpshooter.nut"
+			],
+			[
+				"script_class_tem",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\script_class_template.nut"
+			],
+			[
+				"script_class_ak",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\akimbo\\script_class_akimbo.nut"
+			],
+			[
+				"default_alt",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\modes\\default_alt.inc"
+			],
+			[
+				"user.nut",
+				"scripts\\main\\gameSystem\\player\\user.nut"
+			],
+			[
+				"weapon.nut",
+				"scripts\\main\\gameSystem\\gameObjects\\weapon.nut"
+			],
+			[
+				"SCRIPT_ATTACK_",
+				"scripts\\gameplay\\base_templates\\scripts\\script_special_attack_global_cooldown.nut"
+			],
+			[
+				"cast_attack_stin",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_sting.nut"
+			],
+			[
+				"overhead",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_overhead.nut"
+			],
+			[
+				"cast_attack_forward_brawler",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\cast_attack_forward_brawler.nut"
+			],
+			[
+				"cast_attack_overhead",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_overhead.nut"
+			],
+			[
+				"script_roni",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\script_class_ronin.nut"
+			],
+			[
+				"script_class_b",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\script_class_brawler.nut"
+			],
+			[
+				"weaon.nut",
+				"scripts\\main\\gameSystem\\gameObjects\\weapon.nut"
+			],
+			[
+				"wepon.nut",
+				"scripts\\gameplay\\base_templates\\base\\Weapon.nut"
+			],
+			[
+				"gozu_a",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\melee\\melee_gozu_axe.nut"
+			],
+			[
+				"vortex cast",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_vortex.nut"
+			],
+			[
+				"cast_over",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_overhead.nut"
+			],
+			[
+				"cast_attack_stig",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_stig.nut"
+			],
+			[
+				"w1_swor",
+				"scripts\\gameplay\\base_templates\\weapons\\w1_sword.nut"
+			],
+			[
+				"cast_attack_s",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_stig.nut"
+			],
+			[
+				"cast_attack_ov",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_overhead.nut"
+			],
+			[
+				"ronin class",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\script_class_ronin.nut"
+			],
+			[
+				"ronin",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\cast_push_ronin.nut"
+			],
+			[
+				"class sharp",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\sharpshooter\\script_class_sharpshooter.nut"
+			],
+			[
+				"class _br",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\script_class_brawler.nut"
+			],
+			[
+				"class pun",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\script_class_punisher.nut"
+			],
+			[
+				"class_mon",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\monkeyboy\\script_class_monkeyboy.nut"
+			],
+			[
+				"class_akim",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\akimbo\\script_class_akimbo.nut"
+			],
+			[
+				"cast_attack_back_brawler",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\cast_attack_back_brawler.nut"
+			],
+			[
+				"script_class_br",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\script_class_brawler.nut"
+			],
+			[
+				"cats stig",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_stig.nut"
+			],
+			[
+				"cast_attack_over",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_overhead.nut"
+			],
+			[
+				"cast_attack_for",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\cast_attack_forward_brawler.nut"
+			],
+			[
+				"cast_attack_vor",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_vortex.nut"
+			],
+			[
+				"cast_attack_force",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_force_slash.nut"
+			],
+			[
+				"cast_attach",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\cast_attack_force_slash.nut"
+			],
+			[
+				"casr braw",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\cast_attack_forward_brawler.nut"
+			],
+			[
+				"cast braw",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\brawler\\cast_attack_back_brawler.nut"
+			],
+			[
+				"cast_attack_forward",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\cast_attack_forward.nut"
+			],
+			[
+				"script_class",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\script_class_ronin.nut"
+			],
+			[
+				"cast_attack_forw",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\cast_attack_forward.nut"
+			],
+			[
+				"weapon gozu",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\melee\\melee_gozu_axe.nut"
+			],
+			[
+				"world.nut",
+				"scripts\\main\\gameSystem\\world.nut"
+			],
+			[
+				"swa_tut_1",
+				"scripts\\gameplay\\base_templates\\interactive\\quests\\swa_1_3_tut\\swa_1_3_tut.nut"
+			],
+			[
+				"quest_swa_tut_gs_item_useable_map",
+				"scripts\\gameplay\\base_templates\\interactive\\quests\\swa_tut_gs\\quest_swa_tut_gs_item_useable_map.nut"
+			],
+			[
+				"weapon",
+				"scripts\\main\\gameSystem\\gameObjects\\weapon.nut"
+			],
+			[
+				"mode Slash",
+				"scripts\\gameplay\\base_templates\\weapons\\enemy\\mode_katana_slash.inc"
+			],
+			[
+				"katana_forceSlash",
+				"scripts\\gameplay\\base_templates\\weapons\\katana_force_slash.nut"
+			],
+			[
+				"proj_punisher",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\proj_punisher_stasis.nut"
+			],
+			[
+				"cast_special_attack",
+				"scripts\\gameplay\\base_templates\\weapons\\cast\\cast_special_attack.nut"
+			],
+			[
+				"cast_attack",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\ronin\\cast_attack_forward.nut"
+			],
+			[
+				"nobitsura",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\melee\\melee_katana_nobitsura.nut"
+			],
+			[
+				"script_play",
+				"scripts\\gameplay\\base_templates\\scripts\\script_play_video.nut"
+			],
+			[
+				"pisto",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\pistol.nut"
+			],
+			[
+				"agent",
+				"scripts\\main\\gameSystem\\gameObjects\\agent.nut"
+			],
+			[
+				"punisher_mo",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_punisher_movement.nut"
+			],
+			[
+				"revolver",
+				"scripts\\gameplay\\base_templates\\weapons\\player\\revolver.nut"
+			],
+			[
+				"revolvers_da",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_punisher_revolvers_damage.nut"
+			],
+			[
+				"medkit_overh",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_medkit_overheal.nut"
+			],
+			[
+				"agentPlayerLoc",
+				"scripts\\main\\gameSystem\\gameObjects\\agentPlayerLocal.nut"
+			],
+			[
+				"card_upgrade_vortex_radius",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_vortex_radius.nut"
+			],
+			[
+				"cast_godsray_punisher",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\cast_godsray_punisher.nut"
+			],
+			[
+				"barrage",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_barrage_damage.nut"
+			],
+			[
+				"godsray",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_godsray_focus.nut"
+			],
+			[
+				"cast_punisher",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\cast_godsray_punisher.nut"
+			],
+			[
+				"proj_punisher_stasis_throwable",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\proj_punisher_stasis_throwable.nut"
+			],
+			[
+				"cast_stasis_punisher",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\cast_stasis_punisher.nut"
+			],
+			[
+				"stasis",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_stasis_amount.nut"
+			],
+			[
+				"stasis_",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_stasis_size.nut"
+			],
+			[
+				"akimbo",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\akimbo\\cast_akimbo_laser_slicer.nut"
+			],
+			[
+				"cast_push",
+				"scripts\\gameplay\\base_templates\\weapons\\cast\\cast_push.nut"
+			],
+			[
+				"proj_punisher_grenade",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\proj_punisher_grenade.nut"
+			],
+			[
+				"cast_vortex_grenade_punisher",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\cast_vortex_grenade_punisher.nut"
+			],
+			[
+				"vortex",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_vortex_sticky.nut"
+			],
+			[
+				"medkit",
+				"scripts\\gameplay\\base_templates\\collectable\\medkit.nut"
+			],
+			[
+				"stasis_a",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_stasis_amount.nut"
+			],
+			[
+				"stasi_am",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_stasis_damage.nut"
+			],
+			[
+				"cast_st",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\cast_stasis_punisher.nut"
+			],
+			[
+				"hp_leach",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_hp_leach.nut"
+			],
+			[
+				"hp_le",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_HP_leach.nut"
+			],
+			[
+				"stasis_dur",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_stasis_duration.nut"
+			],
+			[
+				"vortex_radius",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_vortex_radius.nut"
+			],
+			[
+				"vortex_dm",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_vortex_dmg.nut"
+			],
+			[
+				"vortex_",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\punisher\\card_upgrade_vortex_repulse.nut"
+			],
+			[
+				"acid_res",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_acid_res.nut"
+			],
+			[
+				"electric_res",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_electric_res.nut"
+			],
+			[
+				"ice_res",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_ice_res.nut"
+			],
+			[
+				"fire_res",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_fire_res.nut"
+			],
+			[
+				"objectstats",
+				"scripts\\main\\gameSystem\\gameObjects\\stats\\objectStats.nut"
+			],
+			[
+				"card_upgrade la",
+				"moje\\card_upgrade_dmg_decr_large.nut"
+			],
+			[
+				"enemies_def",
+				"scripts\\gameplay\\base_templates\\spawn\\enemies_def_base.nut"
+			],
+			[
+				"well_regenerative",
+				"scripts\\gameplay\\base_templates\\interactive\\well_regenerative.nut"
+			],
+			[
+				"well",
+				"scripts\\gameplay\\base_templates\\interactive\\well_hp.nut"
+			],
+			[
+				"script_obj",
+				"scripts\\gameplay\\base_templates\\base\\Script_Object.nut"
+			],
+			[
+				"gameObject",
+				"scripts\\main\\gameSystem\\gameObjects\\gameObject.nut"
+			],
+			[
+				"script_object",
+				"scripts\\gameplay\\base_templates\\base\\Script_Object.nut"
+			],
+			[
+				"max_hp_inc",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_max_hp_inc.nut"
+			],
+			[
+				"medkit_over",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_medkit_overheal.nut"
+			],
+			[
+				"hp_lea",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_HP_leach.nut"
+			],
+			[
+				"wc_acid",
+				"scripts\\gameplay\\base_templates\\weapons\\cards\\wc_acidDmg.nut"
+			],
+			[
+				"agent.nut",
+				"scripts\\main\\gameSystem\\gameObjects\\agent.nut"
+			],
+			[
+				"elemental_status_",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_elemental_status_chance.nut"
+			],
+			[
+				"place",
+				"scripts\\main\\gameSystem\\gameObjects\\placeable.nut"
+			],
+			[
+				"script_class_t",
+				"scripts\\gameplay\\base_templates\\player\\playerclasses\\script_class_template.nut"
+			],
+			[
+				"medkit_hot",
+				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_medkit_hot.nut"
+			],
+			[
+				"well_hp",
+				"scripts\\gameplay\\base_templates\\interactive\\well_hp.nut"
+			],
+			[
+				"medkit_li",
+				"scripts\\gameplay\\base_templates\\collectable\\medkit_light.nut"
+			],
+			[
+				"gameplay\\debg\\spawn",
+				"scripts\\gameplay\\debug\\spawn_item.nut"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "Reload",
+		"selected_items":
+		[
+			[
+				"Reload",
+				"Reload"
+			]
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 203.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
