@@ -231,43 +231,25 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 1393,
+				"buffer_size": 1546,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "utility.js",
-			"settings":
-			{
-				"buffer_size": 367,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "spawn_manager.js",
 			"settings":
 			{
-				"buffer_size": 1367,
+				"buffer_size": 1454,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "prototypes.js",
+			"file": "creep.upgrader.js",
 			"settings":
 			{
-				"buffer_size": 1730,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "creep.harvester.js",
-			"settings":
-			{
-				"buffer_size": 903,
+				"buffer_size": 680,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -317,19 +299,47 @@
 	],
 	"file_history":
 	[
-		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.upgrader.js",
-		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.harvester.js",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/User/TernJS.sublime-settings",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/TernJS/TernJS.sublime-settings",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.builder.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Creep.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/ConstructionSite.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Flag.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Game.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Tombstone.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Structure.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Source.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/RoomVisual.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/RoomPosition.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/RoomObject.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Room.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Resource.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Readme.md",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/RawMemory.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/PowerCreep.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/PathFinder.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/package.json",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/OwnedStructure.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Order.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Nuke.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Mineral.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Memory.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.porter.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/utility.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/prototypes.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.harvester.js",
+		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.upgrader.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/spawn_manager.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/creep.engineer.js",
 		"/C/Program Files/Steam/steamapps/common/Screeps/server/mods.example.json",
 		"/C/Program Files/Steam/steamapps/common/Screeps/server/mods.json",
 		"/C/Program Files/Steam/steamapps/common/Screeps/server/example-mods/tick-duration.js",
-		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/prototypes.js",
 		"/C/Program Files/Steam/steamapps/common/Screeps/server/.screepsrc",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/screeps.com/default/main.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/spawner.js",
-		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/ScreepsAutocomplete/Creep.js",
 		"/C/Users/Adam/AppData/Local/Screeps/scripts/127_0_0_1___21025/default/main.js",
 		"/F/Steam/steamapps/common/Screeps/server/mods.json",
 		"/F/Steam/steamapps/common/Screeps/server/package/package.json",
@@ -416,35 +426,7 @@
 		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/brawler/cast_attack_forward_brawler.nut",
 		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_stig.nut",
 		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_vortex.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_left.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_right.nut",
-		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/base/Weapon.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/cast_attack_force_slash.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_forward.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_push_ronin.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/brawler/cast_attack_back_brawler.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_vortex.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_force_slash.nut",
-		"/C/Users/Adam/Desktop/pit/cast_attack_force_slash_2.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_attack_stig.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/main/gameSystem/player/userLocal.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/cast/cast_special_attack.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_dual_chienese.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/main/gameSystem/gameObjects/agentPlayerLocal.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/dark_force/special_move_attack_uppercut.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/blendtree_player_body.inc",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/interactive/quests/swa_tut_gs/quest_swa_tut_gs_item_useable_map.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_back.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/enemy/mode_katana_slash.inc",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/katana_force_slash.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/proj_punisher_stasis.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/cast_stasis_punisher.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_stasis_damage.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/cards/card_upgrade_hp_leach.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/card_upgrade_stasis_duration.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/punisher/proj_punisher_grenade.nut",
-		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/weapons/player/melee/melee_katana_nobitsura.nut",
-		"/Z/roadhog3_swa/bin/data_common/scripts/gameplay/base_templates/scripts/script_play_video.nut"
+		"/Z/roadhog3_swa/bin/data_sw2/scripts/gameplay/base_templates/player/playerclasses/ronin/cast_attack_left.nut"
 	],
 	"find":
 	{
@@ -482,7 +464,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -491,15 +473,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1393,
+						"buffer_size": 1546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								561,
-								561
+								325,
+								325
 							]
 						],
 						"settings":
@@ -508,7 +490,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 54.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -516,76 +498,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "utility.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 367,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								361,
-								361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "spawn_manager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1367,
+						"buffer_size": 1454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								649,
-								649
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "prototypes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1730,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								344,
-								344
+								510,
+								510
 							]
 						],
 						"settings":
@@ -601,20 +526,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "creep.harvester.js",
+					"buffer": 2,
+					"file": "creep.upgrader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 903,
+						"buffer_size": 680,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								453,
-								453
+								314,
+								314
 							]
 						],
 						"settings":
@@ -626,7 +551,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -685,6 +610,18 @@
 		"selected_items":
 		[
 			[
+				"porter",
+				"creep.porter.js"
+			],
+			[
+				"builder",
+				"creep.builder.js"
+			],
+			[
+				"upgrader",
+				"creep.upgrader.js"
+			],
+			[
 				"utility",
 				"utility.js"
 			],
@@ -703,10 +640,6 @@
 			[
 				"engi",
 				"creep.engineer.js"
-			],
-			[
-				"builder",
-				"creep.builder.js"
 			],
 			[
 				"creep",
@@ -1187,14 +1120,6 @@
 			[
 				"agent.nut",
 				"scripts\\main\\gameSystem\\gameObjects\\agent.nut"
-			],
-			[
-				"elemental_status_",
-				"scripts\\gameplay\\base_templates\\player\\cards\\card_upgrade_elemental_status_chance.nut"
-			],
-			[
-				"place",
-				"scripts\\main\\gameSystem\\gameObjects\\placeable.nut"
 			]
 		],
 		"width": 0.0
@@ -1228,7 +1153,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 203.0,
 	"status_bar_visible": true,
 	"template_settings":

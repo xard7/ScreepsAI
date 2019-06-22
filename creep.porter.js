@@ -2,30 +2,30 @@ module.exports =
 {
 	run: function(creep)
 	{
-		if(!creep.memory.bussy)
-		{
-			var source = creep.pos.findClosestByPath(FIND_SOURCES);
-			if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+		var dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
 			{
-				creep.moveTo(source);
-			}
-
-			var carry = _.sum(creep.carry);
-			if(carry == creep.carryCapacity)
-			{
-				creep.memory.bussy = true;
-			}
-		}
-		else
-		{
-			var dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+				filter: function(s)
 				{
-					filter: function(s)
-					{
-						return s.structureType == STRUCTURE_EXTENSION && s.energyCapacity - s.energy > 0;
-					}
-				});
-			if(dest)
+					return s.structureType == STRUCTURE_EXTENSION && s.energyCapacity - s.energy > 0;
+				}
+			});
+		if(dest)
+		{
+			if(!creep.memory.bussy)
+			{
+				var source = creep.pos.findClosestByPath(FIND_SOURCES);
+				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+				{
+					creep.moveTo(source);
+				}
+
+				var carry = _.sum(creep.carry);
+				if(carry == creep.carryCapacity)
+				{
+					creep.memory.bussy = true;
+				}
+			}
+			else
 			{
 				switch(creep.transfer(dest, RESOURCE_ENERGY))
 				{
@@ -42,10 +42,10 @@ module.exports =
 					break;
 				}
 			}
-			else
-			{
-				require("creep.upgrader").run(creep);
-			}
+		}
+		else
+		{
+			require("creep.upgrader").run(creep);
 		}
 	},
 };
