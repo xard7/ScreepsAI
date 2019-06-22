@@ -5,6 +5,11 @@ module.exports =
 		if(!creep.memory.bussy)
 		{
 			var source = creep.pos.findClosestByPath(FIND_SOURCES);
+			if(creep.memory.source != undefined)
+			{
+				source = Game.getObjectById(creep.memory.source);
+				Memory.Sources[creep.memory.source].harvesters[creep.name] = true;
+			}
 			if(creep.harvest(source) == ERR_NOT_IN_RANGE)
 			{
 				creep.moveTo(source);

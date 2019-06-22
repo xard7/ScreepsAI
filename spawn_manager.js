@@ -1,15 +1,13 @@
 module.exports =
-{
+{	
 	run: function(Spawner)
 	{
-		/*if(Spawner.memory.uniqueCounter == undefined)
+		var minimalNumberOfHarverters = 0;
+		for(let idx in Memory.Sources)
 		{
-			Spawner.memory.uniqueCounter = 0;
+			minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
 		}
 
-		Spawner.memory.uniqueCounter ++;*/
-
-		const minimalNumberOfHarverters = 5;
 		const minimalNumberOfUpgraders 	= 2;
 		const minimalNumberOfBuilders 	= 1;
 		const minimalNumberOfPorters 	= 1;
@@ -21,7 +19,17 @@ module.exports =
 
 		if(numberOfHarvesters < minimalNumberOfHarverters)
 		{
-			Spawner.spawnCustomCreep("Harvester", "harvester", "WCCMMM");
+			var sourceId = undefined;
+			for(let idx in Memory.Sources)
+			{
+				var sH = Object.keys(Memory.Sources[idx].harvesters).length;
+				if(sH < Memory.Sources[idx].availableFields)
+				{
+					sourceId = idx;
+					break;
+				}
+			}
+			Spawner.spawnCustomCreep("Harvester", "harvester", "WCMM", {source: sourceId});
 		}
 		else if(numberOfUpgraders < minimalNumberOfUpgraders)
 		{
@@ -29,11 +37,11 @@ module.exports =
 		}
 		else if(numberOfBuilders < minimalNumberOfBuilders)
 		{
-			Spawner.spawnCustomCreep("Builder", "builder", "WWCMM");
+			Spawner.spawnCustomCreep("Builder", "builder", "WCMM");
 		}
 		else if(numberOfPorters < minimalNumberOfPorters)
 		{
-			Spawner.spawnCustomCreep("Porter", "porter", "WCCMM");
+			Spawner.spawnCustomCreep("Porter", "porter", "WCMM");
 		}
 		else
 		{

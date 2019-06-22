@@ -1,6 +1,6 @@
 module.exports = function()
 {
-	StructureSpawn.prototype.spawnCustomCreep = function(name, roleName, bodyStr)
+	StructureSpawn.prototype.spawnCustomCreep = function(name, roleName, bodyName, opt)
 	{
 		if(this.memory.uniqueCounter == undefined)
 		{
@@ -9,9 +9,9 @@ module.exports = function()
 		this.memory.uniqueCounter ++;
 
 		var body = [];
-		if(typeof(bodyStr) == "string")
+		if(typeof(bodyName) == "string")
 		{
-			for(let s of bodyStr)
+			for(let s of bodyName)
 			{
 				switch(s)
 				{
@@ -45,9 +45,22 @@ module.exports = function()
 			body = [WORK, CARRY, MOVE, MOVE];
 		}
 
+		var context = 
+		{
+			memory: 
+			{
+				role: roleName, 
+				bussy: false
+			}
+		};
+		if(opt != undefined)
+		{
+			Object.assign(context.memory, opt);
+		}
+
 		var retErr;
 		var creepName = name + this.memory.uniqueCounter;
-		retErr =  this.spawnCreep(body, creepName, {memory: {role: roleName, bussy: false}});
+		retErr =  this.spawnCreep(body, creepName, context);
 
 		switch(retErr)
 		{
