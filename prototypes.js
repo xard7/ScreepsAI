@@ -66,6 +66,7 @@ module.exports = function()
 		{
 			case OK:
 				console.log("Creep with name " + creepName + " spawned successfully.");
+				return Game.creeps[creepName];
 			break;
 
 			case ERR_NOT_OWNER:

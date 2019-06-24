@@ -2,46 +2,37 @@ module.exports =
 {
 	run: function(creep)
 	{
-		var roleUpgrader = require("creep.upgrader");
-
-		if(!creep.memory.bussy)
+		if((creep.ticksToLive % 300) == 0)
 		{
-			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-			if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
-			{
-				creep.moveTo(source);
-			}
-
-			var carry = _.sum(creep.carry);
-			if(carry == creep.carryCapacity)
-			{
-				creep.memory.bussy = true;
-			}
+			creep.memory.plansDone = false;
 		}
-		else
+		if(creep.memory.plansDone == undefined || !creep.memory.plansDone)
 		{
-			var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
-			if(constructionSite)
-			{
-				switch(creep.build(constructionSite))
-				{
-					case ERR_NOT_IN_RANGE:
-					{
-						creep.moveTo(constructionSite);
-					}
-					break;
+			creep.memory.plansDone = true;
 
-					case ERR_NOT_ENOUGH_RESOURCES:
-					{
-						creep.memory.bussy = false;
-					}
-					break;
+			var sources = creep.room.find(FIND_SOURCES);
+			var spawn = Game.spawns["Home"];
+			var paths = [];
+			for(let source of sources)
+			{
+				let p = creep.room.findPath(spawn.pos, source.pos);
+				paths.push(Room.serializePath(p))
+			}
+			{
+				let p = creep.room.findPath(spawn.pos, creep.room.controller.pos);
+				paths.push(Room.serializePath(p));
+			}
+
+			for(let path of paths)
+			{
+				let p = Room.deserializePath(path)
+				for(let pathVal of p)
+				{
+					let ret = creep.room.createConstructionSite(pathVal.x, pathVal.y, STRUCTURE_ROAD);
 				}
 			}
-			else
-			{
-				roleUpgrader.run(creep);
-			}
 		}
+
+		require("creep.builder").run(creep);
 	},
 };

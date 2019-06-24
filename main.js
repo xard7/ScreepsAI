@@ -6,6 +6,7 @@ var roleHarvester = require("creep.harvester");
 var roleUpgrader = require("creep.upgrader");
 var roleBuilder = require("creep.builder");
 var rolePorter = require("creep.porter");
+var roleEngineer = require("creep.engineer");
 var Utility = require("utility");
 
 module.exports.loop = function()
@@ -77,6 +78,12 @@ module.exports.loop = function()
 			case "porter":
 			{
 				rolePorter.run(creep);
+			}
+			break;
+
+			case "engineer":
+			{
+				roleEngineer.run(creep);
 			}
 			break;
 		}

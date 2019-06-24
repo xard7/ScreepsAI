@@ -8,14 +8,39 @@ module.exports =
 			minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
 		}
 
-		const minimalNumberOfUpgraders 	= 2;
-		const minimalNumberOfBuilders 	= 1;
-		const minimalNumberOfPorters 	= 1;
+		var minimalNumberOfUpgraders = 1;
+		if(Spawner.room.controller.level > 1)
+		{
+			minimalNumberOfUpgraders = 1;
+		}
+
+		var minimalNumberOfBuilders = 0;
+		if(Spawner.room.controller.level > 1)
+		{
+			minimalNumberOfBuilders = 1;
+		}
+
+		var minimalNumberOfPorters = 0;
+		if(Spawner.room.controller.level > 2)
+		{
+			minimalNumberOfPorters = 2;
+		}
+		if(Spawner.room.controller.level > 1)
+		{
+			minimalNumberOfPorters = 1;
+		}
+
+		var minimalNumberOfEngineers = 0;
+		if(Spawner.room.controller.level > 1)
+		{
+			minimalNumberOfEngineers = 1;
+		}
 
 		var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
 		var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
 		var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
 		var numberOfPorters = _.sum(Game.creeps, (c) => c.memory.role == "porter");
+		var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
 
 		if(numberOfHarvesters < minimalNumberOfHarverters)
 		{
@@ -31,17 +56,21 @@ module.exports =
 			}
 			Spawner.spawnCustomCreep("Harvester", "harvester", "WCMM", {source: sourceId});
 		}
+		else if(numberOfPorters < minimalNumberOfPorters)
+		{
+			Spawner.spawnCustomCreep("Porter", "porter", "WCCMM");
+		}
 		else if(numberOfUpgraders < minimalNumberOfUpgraders)
 		{
 			Spawner.spawnCustomCreep("Upgrader", "upgrader");
 		}
 		else if(numberOfBuilders < minimalNumberOfBuilders)
 		{
-			Spawner.spawnCustomCreep("Builder", "builder", "WCMM");
+			Spawner.spawnCustomCreep("Builder", "builder", "WWCMM");
 		}
-		else if(numberOfPorters < minimalNumberOfPorters)
+		else if(numberOfEngineers < minimalNumberOfEngineers)
 		{
-			Spawner.spawnCustomCreep("Porter", "porter", "WCMM");
+			Spawner.spawnCustomCreep("Engineer", "engineer", "WWCMM");
 		}
 		else
 		{

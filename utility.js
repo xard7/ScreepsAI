@@ -2,7 +2,7 @@ module.exports =
 {
 	getNumberOfAvailableFields: function(pos)
 	{
-		const terrain = new Room.Terrain(pos.roomName);
+		const terrain = Game.rooms[pos.roomName].getTerrain();
 		var num = 0;
 		for(let x = (pos.x - 1); x <= (pos.x + 1); x++)
 		{
