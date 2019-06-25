@@ -70,7 +70,7 @@ module.exports =
 		}
 		else if(numberOfPorters < minimalNumberOfPorters)
 		{
-			Spawner.spawnCustomCreep("Porter", "porter", "WCCMM");
+			Spawner.spawnCustomCreep("Porter", "porter", "WCMM");
 		}
 		else
 		{

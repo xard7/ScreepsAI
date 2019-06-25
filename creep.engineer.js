@@ -12,6 +12,7 @@ module.exports =
 
 			creep.memory.plansDone = true;
 
+			//if(false)
 			{ // Extensins
 				for(let i = 0; i < 3; i++)
 				{
@@ -26,16 +27,17 @@ module.exports =
 				}
 			}
 
+			//if(false)
 			{ // Roads.
 				var sources = creep.room.find(FIND_SOURCES);
 				var paths = [];
 				for(let source of sources)
 				{
-					let p = creep.room.findPath(spawn.pos, source.pos);
+					let p = creep.room.findPath(spawn.pos, source.pos, {ignoreCreeps: true, swampCost: 1});
 					paths.push(Room.serializePath(p))
 				}
 				{
-					let p = creep.room.findPath(spawn.pos, creep.room.controller.pos);
+					let p = creep.room.findPath(spawn.pos, creep.room.controller.pos, {ignoreCreeps: true, swampCost: 1});
 					paths.push(Room.serializePath(p));
 				}
 

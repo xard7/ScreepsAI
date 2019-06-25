@@ -18,7 +18,19 @@ module.exports =
 		}
 		else
 		{
-			var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+			var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES,
+				{
+					filter: function(s)
+					{
+						return s.structureType == STRUCTURE_EXTENSION;
+					}
+				});
+
+			if(!constructionSite)
+			{
+				constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+			}
+
 			if(constructionSite)
 			{
 				switch(creep.build(constructionSite))

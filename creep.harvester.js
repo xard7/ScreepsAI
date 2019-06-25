@@ -44,7 +44,7 @@ module.exports =
 			}
 			else
 			{
-				require("creep.porter").run(creep);
+				require("creep.builder").run(creep);
 			}
 		}
 	},
