@@ -14,8 +14,14 @@ module.exports =
 			minimalNumberOfUpgraders = 1;
 		}
 
-		var minimalNumberOfBuilders = 0;
+		var minimalNumberOfEngineers = 0;
 		if(Spawner.room.controller.level > 1)
+		{
+			minimalNumberOfEngineers = 1;
+		}
+
+		var minimalNumberOfBuilders = 0;
+		if(Spawner.room.controller.level > 2)
 		{
 			minimalNumberOfBuilders = 1;
 		}
@@ -25,15 +31,9 @@ module.exports =
 		{
 			minimalNumberOfPorters = 2;
 		}
-		if(Spawner.room.controller.level > 1)
+		else if(Spawner.room.controller.level > 1)
 		{
 			minimalNumberOfPorters = 1;
-		}
-
-		var minimalNumberOfEngineers = 0;
-		if(Spawner.room.controller.level > 1)
-		{
-			minimalNumberOfEngineers = 1;
 		}
 
 		var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
@@ -56,21 +56,21 @@ module.exports =
 			}
 			Spawner.spawnCustomCreep("Harvester", "harvester", "WCMM", {source: sourceId});
 		}
-		else if(numberOfPorters < minimalNumberOfPorters)
-		{
-			Spawner.spawnCustomCreep("Porter", "porter", "WCCMM");
-		}
 		else if(numberOfUpgraders < minimalNumberOfUpgraders)
 		{
 			Spawner.spawnCustomCreep("Upgrader", "upgrader");
 		}
-		else if(numberOfBuilders < minimalNumberOfBuilders)
-		{
-			Spawner.spawnCustomCreep("Builder", "builder", "WWCMM");
-		}
 		else if(numberOfEngineers < minimalNumberOfEngineers)
 		{
-			Spawner.spawnCustomCreep("Engineer", "engineer", "WWCMM");
+			Spawner.spawnCustomCreep("Engineer", "engineer", "WCMM");
+		}
+		else if(numberOfBuilders < minimalNumberOfBuilders)
+		{
+			Spawner.spawnCustomCreep("Builder", "builder", "WCMM");
+		}
+		else if(numberOfPorters < minimalNumberOfPorters)
+		{
+			Spawner.spawnCustomCreep("Porter", "porter", "WCCMM");
 		}
 		else
 		{
