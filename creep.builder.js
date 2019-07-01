@@ -5,9 +5,20 @@ module.exports =
 		if(!creep.memory.bussy)
 		{
 			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-			if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+			if(source.energy > 100)
 			{
-				creep.moveTo(source);
+				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+				{
+					creep.moveTo(source);
+				}
+			}
+			else
+			{
+				source = creep.pos.findClosestByPath(FIND_SOURCES);
+				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+				{
+					creep.moveTo(source);
+				}
 			}
 
 			var carry = _.sum(creep.carry);
@@ -18,22 +29,48 @@ module.exports =
 		}
 		else
 		{
-			var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES,
+		    var isRepairing = false;
+			var constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES,
 				{
 					filter: function(s)
 					{
 						return s.structureType == STRUCTURE_EXTENSION;
 					}
 				});
-
+				
+			if(!constructionSite)
+			{
+				constructionSite = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+				    {
+				        filter: function(s)
+        				{
+					    const terrain = Game.rooms[s.pos.roomName].getTerrain();
+        					return s.hits < s.hitsMax && terrain.get(s.pos.x, s.pos.y) == TERRAIN_MASK_SWAMP;
+        				}
+				        
+				    });
+				isRepairing = true;
+			}
+			
 			if(!constructionSite)
 			{
 				constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+				isRepairing = false;
 			}
 
 			if(constructionSite)
 			{
-				switch(creep.build(constructionSite))
+			    var r = OK;
+			    if(isRepairing)
+			    {
+			        r = creep.repair(constructionSite);
+			    }
+			    else
+			    {
+			        r = creep.build(constructionSite);
+			    }
+			    
+				switch(r)
 				{
 					case ERR_NOT_IN_RANGE:
 					{
@@ -50,7 +87,7 @@ module.exports =
 			}
 			else
 			{
-				require("creep.porter").run(creep);
+				require("creep.updater").run(creep);
 			}
 		}
 	},

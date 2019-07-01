@@ -1,5 +1,6 @@
 
 require("prototypes")();
+var Utility = require("utility");
 
 var spawnManager = require("spawn_manager");
 var roleHarvester = require("creep.harvester");
@@ -7,14 +8,13 @@ var roleUpgrader = require("creep.upgrader");
 var roleBuilder = require("creep.builder");
 var rolePorter = require("creep.porter");
 var roleEngineer = require("creep.engineer");
-var Utility = require("utility");
 
 module.exports.loop = function()
 {
 	//if(Memory.Sources != undefined) delete Memory.Sources;
 	if(Memory.Sources == undefined)
 	{
-		Memory.Sources = {};
+    	Memory.Sources = {};
 
 		var room = Game.spawns["Home"].room;
 		var Sources = room.find(FIND_SOURCES);
@@ -49,43 +49,51 @@ module.exports.loop = function()
 		}
 	}
 
-
-	spawnManager.run(Game.spawns["Home"]);
+    var Spawn = Game.spawns["Home"];
+	spawnManager.run[Spawn.room.controller.level - 1](Spawn);
 
 	for(let idx in Game.creeps)
 	{
 		var creep = Game.creeps[idx];
-		switch(creep.memory.role)
+
+		if(Utility.getNumberOfHarvesters() == 0)
 		{
-			case "builder":
+			roleHarvester.run(creep);
+		}
+		else
+		{
+			switch(creep.memory.role)
 			{
-				roleBuilder.run(creep);
-			}
-			break;
-			
-			case "upgrader":
-			{
-				roleUpgrader.run(creep);
-			}
-			break;
+				case "builder":
+				{
+					roleBuilder.run(creep);
+				}
+				break;
+				
+				case "upgrader":
+				{
+					roleUpgrader.run(creep);
+				}
+				break;
 
-			case "harvester":
-			{
-				roleHarvester.run(creep);
-			}
-			break;
+				case "harvester":
+				{
+					roleHarvester.run(creep);
+				}
+				break;
 
-			case "porter":
-			{
-				rolePorter.run(creep);
-			}
-			break;
+				case "porter":
+				{
+					rolePorter.run(creep);
+				}
+				break;
 
-			case "engineer":
-			{
-				roleEngineer.run(creep);
+				case "engineer":
+				{
+					roleEngineer.run(creep);
+				}
+				break;
 			}
-			break;
 		}
 	}
 }

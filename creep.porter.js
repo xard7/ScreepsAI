@@ -9,6 +9,7 @@ module.exports =
 					return s.structureType == STRUCTURE_EXTENSION && s.energyCapacity - s.energy > 0;
 				}
 			});
+			
 		if(dest)
 		{
 			if(!creep.memory.bussy)

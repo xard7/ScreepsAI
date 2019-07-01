@@ -5,9 +5,20 @@ module.exports =
 		if(!creep.memory.bussy)
 		{
 			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-			if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+			if(source.energy == source.energyCapacity)
 			{
-				creep.moveTo(source);
+				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+				{
+					creep.moveTo(source);
+				}
+			}
+			else
+			{
+				source = creep.pos.findClosestByPath(FIND_SOURCES);
+				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+				{
+					creep.moveTo(source);
+				}
 			}
 
 			var carry = _.sum(creep.carry);

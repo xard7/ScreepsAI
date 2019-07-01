@@ -16,5 +16,29 @@ module.exports =
 		}
 
 		return num;
+	},
+	getNeighborFields: function(pos)
+	{
+	    const terrain = Game.rooms[pos.roomName].getTerrain();
+	    var retArray = [];
+		for(let _x = (pos.x - 1); _x <= (pos.x + 1); _x++)
+		{
+			for(let _y = (pos.y - 1); _y <= (pos.y + 1); _y++)
+			{
+				if(terrain.get(_x, _y) != TERRAIN_MASK_WALL)
+				{
+					if(_x != pos.x || _y != pos.y)
+					{
+					    retArray.push({x: _x, y: _y});
+					}
+				}
+			}
+		}
+		
+		return retArray;
+	},
+	getNumberOfHarvesters: function()
+	{
+		return _.sum(Game.creeps, (c) => c.memory.role == "harvester");
 	}
 };
