@@ -30,7 +30,7 @@ module.exports =
 		else
 		{
 		    var isRepairing = false;
-			var constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES,
+		    var constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES,
 				{
 					filter: function(s)
 					{
@@ -40,7 +40,7 @@ module.exports =
 				
 			if(!constructionSite)
 			{
-				constructionSite = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+				constructionSite = creep.pos.findClosestByPath(FIND_STRUCTURES,
 				    {
 				        filter: function(s)
         				{
@@ -54,7 +54,7 @@ module.exports =
 			
 			if(!constructionSite)
 			{
-				constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+				constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES);
 				isRepairing = false;
 			}
 
