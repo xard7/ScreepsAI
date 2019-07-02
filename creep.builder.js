@@ -4,22 +4,39 @@ module.exports =
 	{
 		if(!creep.memory.bussy)
 		{
-			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-			if(source.energy > 100)
-			{
-				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
-				{
-					creep.moveTo(source);
-				}
-			}
-			else
-			{
-				source = creep.pos.findClosestByPath(FIND_SOURCES);
-				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
-				{
-					creep.moveTo(source);
-				}
-			}
+		    var droppedSource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
+		        {
+    		        filter: function(e)
+					{
+						return creep.pos.inRangeTo(e, 15);
+					}
+    			});
+		    if(droppedSource)
+		    {
+    		    if(creep.pickup(droppedSource) == ERR_NOT_IN_RANGE)
+    			{
+    				creep.moveTo(droppedSource);
+    			}
+		    }
+		    else
+		    {
+    			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
+    			if(source.energy > 100)
+    			{
+    				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+    				{
+    					creep.moveTo(source);
+    				}
+    			}
+    			else
+    			{
+    				source = creep.pos.findClosestByPath(FIND_SOURCES);
+    				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+    				{
+    					creep.moveTo(source);
+    				}
+    			}
+		    }
 
 			var carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
@@ -45,7 +62,7 @@ module.exports =
 				        filter: function(s)
         				{
 					    const terrain = Game.rooms[s.pos.roomName].getTerrain();
-        					return s.hits < s.hitsMax && terrain.get(s.pos.x, s.pos.y) == TERRAIN_MASK_SWAMP;
+        					return s.hits < s.hitsMax  && creep.memory.role == "builder";
         				}
 				        
 				    });

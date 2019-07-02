@@ -64,9 +64,9 @@ module.exports.loop = function()
 		{
 			switch(creep.memory.role)
 			{
-				case "builder":
+				case "harvester":
 				{
-					roleBuilder.run(creep);
+					roleHarvester.run(creep);
 				}
 				break;
 				
@@ -76,21 +76,21 @@ module.exports.loop = function()
 				}
 				break;
 
-				case "harvester":
+				case "engineer":
 				{
-					roleHarvester.run(creep);
+					roleEngineer.run(creep);
+				}
+				break;
+				
+				case "builder":
+				{
+					roleBuilder.run(creep);
 				}
 				break;
 
 				case "porter":
 				{
 					rolePorter.run(creep);
-				}
-				break;
-
-				case "engineer":
-				{
-					roleEngineer.run(creep);
 				}
 				break;
 			}

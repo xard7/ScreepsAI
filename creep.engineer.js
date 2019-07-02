@@ -19,17 +19,15 @@ module.exports =
 			{ // Extensins
 				for(let i = 0; i < 4; i++)
 				{
-					for(let j = 0; j < 10; j++)
-					{
-						creep.room.createConstructionSite(spawn.pos.x - 3 + i 	+ j, spawn.pos.y + 3 		+ j, STRUCTURE_EXTENSION);
-						creep.room.createConstructionSite(spawn.pos.x - 3 		+ j, spawn.pos.y + 3 + i 	+ j, STRUCTURE_EXTENSION);
-						creep.room.createConstructionSite(spawn.pos.x + 3 + i 	+ j, spawn.pos.y - 3 		+ j, STRUCTURE_EXTENSION);
-						creep.room.createConstructionSite(spawn.pos.x + 3 		+ j, spawn.pos.y - 3 + i 	+ j, STRUCTURE_EXTENSION);
-					}
+					creep.room.createConstructionSite(spawn.pos.x - 3 + i, spawn.pos.y + 3, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(spawn.pos.x - 3, spawn.pos.y + 3 + i, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(spawn.pos.x + 3 + i, spawn.pos.y - 3, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(spawn.pos.x + 3, spawn.pos.y - 3 + i, STRUCTURE_EXTENSION);
+
+					//creep.room.createConstructionSite(spawn.pos.x + (i * 2), spawn.pos.y + (i * 2), STRUCTURE_EXTENSION);
 				}
 			}
 
-			//if(false)
 			{ // Roads.
 				var sources = creep.room.find(FIND_SOURCES);
 				var paths = [];
@@ -80,11 +78,11 @@ module.exports =
 				}
 				
 				// road around spawn
-    		    let roadList = Utility.getNeighborFields(spawn.pos);
+    		    /*let roadList = Utility.getNeighborFields(spawn.pos);
     			for(let roadPos of roadList)
     			{
     			    creep.room.createConstructionSite(roadPos.x, roadPos.y, STRUCTURE_ROAD);
-			    }
+			    }*/
 
 				for(let path of paths)
 				{

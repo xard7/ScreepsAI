@@ -1,3 +1,5 @@
+var Utility = require("utility");
+
 module.exports =
 {
 	run: function(creep)
@@ -32,7 +34,7 @@ module.exports =
     				}
     			});
     			
-			if(!dest)
+			if(!dest || Utility.getNumberOfHarvesters() < 2)
 			{
 			    dest = Game.spawns["Home"];
 			}
