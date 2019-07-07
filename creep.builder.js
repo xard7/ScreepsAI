@@ -1,41 +1,46 @@
+var Utility = require("utility");
+
 module.exports =
 {
 	run: function(creep)
 	{
 		if(!creep.memory.bussy)
 		{
-		    var droppedSource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
-		        {
-    		        filter: function(e)
-					{
-						return creep.pos.inRangeTo(e, 15);
-					}
-    			});
-		    if(droppedSource)
+		    if(!Utility.pickupEnergy(creep, 7))
 		    {
-    		    if(creep.pickup(droppedSource) == ERR_NOT_IN_RANGE)
-    			{
-    				creep.moveTo(droppedSource);
-    			}
-		    }
-		    else
-		    {
-    			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-    			if(source.energy > 100)
-    			{
-    				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+		    	var storage = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+		    		{
+		    			filter: function(s)
+		    			{
+		    				return s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] != 0;
+		    			}
+		    		});
+		    	if(storage)
+		    	{
+					if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
     				{
-    					creep.moveTo(source);
+    					creep.moveTo(storage);
     				}
-    			}
-    			else
-    			{
-    				source = creep.pos.findClosestByPath(FIND_SOURCES);
-    				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
-    				{
-    					creep.moveTo(source);
-    				}
-    			}
+		    	}
+		    	else
+		    	{
+	    			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
+	    			if(source.energy > 100)
+	    			{
+	    				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+	    				{
+	    					creep.moveTo(source);
+	    				}
+	    			}
+	    			else
+	    			{
+	    				source = creep.pos.findClosestByPath(FIND_SOURCES);
+	    				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+	    				{
+	    					creep.moveTo(source);
+	    				}
+	    			}
+	    		}
 		    }
 
 			var carry = _.sum(creep.carry);
@@ -104,7 +109,7 @@ module.exports =
 			}
 			else
 			{
-				require("creep.updater").run(creep);
+				require("creep.upgrader").run(creep);
 			}
 		}
 	},

@@ -5,9 +5,11 @@ var Utility = require("utility");
 var spawnManager = require("spawn_manager");
 var roleHarvester = require("creep.harvester");
 var roleUpgrader = require("creep.upgrader");
+var roleEngineer = require("creep.engineer");
 var roleBuilder = require("creep.builder");
 var rolePorter = require("creep.porter");
-var roleEngineer = require("creep.engineer");
+var roleTower = require("structure.tower");
+var roleLink = require("structure.link");
 
 module.exports.loop = function()
 {
@@ -26,6 +28,34 @@ module.exports.loop = function()
 				harvesters: {},
 			};
 		}
+	}
+	
+	//if(Memory.Links != undefined) delete Memory.Links;
+	if(Memory.Links == undefined)
+	{
+	    Memory.Links = {};
+	    var room = Game.spawns["Home"].room;
+	    var links = room.find(FIND_MY_STRUCTURES,
+    	    {
+    	        filter:
+    	        {
+    	            structureType: STRUCTURE_LINK
+    	        }
+    	    });
+    	for(let link of links)
+    	{
+    	    let cargo = link.pos.findInRange(FIND_MY_STRUCTURES, 3,
+    	        {
+    	            filter:
+    	            {
+    	                structureType: STRUCTURE_STORAGE
+    	            }
+    	        });
+    	    if(Object.keys(cargo).length != 0)
+    	    {
+    	        Memory.Links[link.id] = true;
+    	    }
+    	}
 	}
 
 	//memory cleanup
@@ -51,6 +81,33 @@ module.exports.loop = function()
 
     var Spawn = Game.spawns["Home"];
 	spawnManager.run[Spawn.room.controller.level - 1](Spawn);
+	
+	var structs = Spawn.room.find( FIND_MY_STRUCTURES,
+	    {
+	        filter: function(s)
+	        {
+	            return s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_LINK;
+	        }
+	    });
+	    
+	for(let struct of structs)
+	{
+	    switch(struct.structureType)
+	    {
+	        case STRUCTURE_TOWER:
+            {
+        	    roleTower.run(struct);
+            }
+	        break;
+	        
+	        case STRUCTURE_LINK:
+            {
+                roleLink.run(struct);
+            }
+	        break;
+	    }
+	    
+	}
 
 	for(let idx in Game.creeps)
 	{

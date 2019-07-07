@@ -17,6 +17,7 @@ module.exports =
 
 		return num;
 	},
+	
 	getNeighborFields: function(pos)
 	{
 	    const terrain = Game.rooms[pos.roomName].getTerrain();
@@ -37,8 +38,37 @@ module.exports =
 		
 		return retArray;
 	},
+	
 	getNumberOfHarvesters: function()
 	{
 		return _.sum(Game.creeps, (c) => c.memory.role == "harvester");
+	},
+	
+	getDestForEnergy: function()
+	{
+		
+	},
+	
+	pickupEnergy: function(creep, range)
+	{
+	    var droppedSource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
+            {
+    	        filter: function(resource)
+    			{
+    				return creep.pos.inRangeTo(resource, range);
+    			}
+    		});
+        if(droppedSource)
+        {
+    	    if(creep.pickup(droppedSource) == ERR_NOT_IN_RANGE)
+    		{
+    			creep.moveTo(droppedSource);
+    			return true;
+    		}
+        }
+        else
+        {
+	        return false;
+        }
 	}
 };

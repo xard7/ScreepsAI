@@ -16,7 +16,7 @@ module.exports =
 			creep.memory.plansDone = true;
 
 			//if(false)
-			{ // Extensins
+			{ // Extensins, storage, links
 				for(let i = 0; i < 4; i++)
 				{
 					creep.room.createConstructionSite(spawn.pos.x - 3 + i, spawn.pos.y + 3, STRUCTURE_EXTENSION);
@@ -24,7 +24,28 @@ module.exports =
 					creep.room.createConstructionSite(spawn.pos.x + 3 + i, spawn.pos.y - 3, STRUCTURE_EXTENSION);
 					creep.room.createConstructionSite(spawn.pos.x + 3, spawn.pos.y - 3 + i, STRUCTURE_EXTENSION);
 
-					//creep.room.createConstructionSite(spawn.pos.x + (i * 2), spawn.pos.y + (i * 2), STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(spawn.pos.x + 2 +  (i * 2), spawn.pos.y + 2 + (i * 2), STRUCTURE_EXTENSION);
+				}
+				
+				creep.room.createConstructionSite(spawn.pos.x - 2, spawn.pos.y - 2, STRUCTURE_STORAGE);
+				
+				{
+				    var stor = creep.room.find(FIND_MY_STRUCTURES, 
+				        {
+				            filter:
+				            {
+				                structureType: STRUCTURE_STORAGE
+				            }
+				        });
+				    if(stor && Object.keys(stor).length != 0)
+				    {
+				        let availablePos = Utility.getNeighborFields(stor[0].pos);
+				        creep.room.createConstructionSite(availablePos[0].x, availablePos[0].y, STRUCTURE_LINK);
+				    }
+				    
+				    var availablePos = Utility.getNeighborFields(creep.room.controller.pos);
+				    var des = availablePos[Math.floor(Object.keys(availablePos).length * 0.5)];
+				    creep.room.createConstructionSite(des.x, des.y, STRUCTURE_LINK);
 				}
 			}
 

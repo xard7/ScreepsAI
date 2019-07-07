@@ -4,20 +4,40 @@ module.exports =
 	{
 		if(!creep.memory.bussy)
 		{
-			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-			if(source.energy == source.energyCapacity)
+			var dest = Game.spawns["Home"];
+			if(dest.energy == dest.energyCapacity)
 			{
-				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+				if(creep.withdraw(dest, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
 				{
-					creep.moveTo(source);
+					creep.moveTo(dest);
 				}
 			}
 			else
 			{
-				source = creep.pos.findClosestByPath(FIND_SOURCES);
-				if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+				dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+					{
+						filter: function(s)
+        				{
+        				    var cargo = s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 0;
+        					var links = s.structureType == STRUCTURE_LINK && s.energy > 0;
+        				    
+        					return cargo || links;
+        				}
+					});
+				if(dest)
 				{
-					creep.moveTo(source);
+					if(creep.withdraw(dest, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+					{
+						creep.moveTo(dest);
+					}
+				}
+				else
+				{
+					dest = creep.pos.findClosestByPath(FIND_SOURCES);
+					if(creep.harvest(dest) == ERR_NOT_IN_RANGE)
+					{
+						creep.moveTo(dest);
+					}
 				}
 			}
 

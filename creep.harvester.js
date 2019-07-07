@@ -6,17 +6,20 @@ module.exports =
 	{
 		if(!creep.memory.bussy)
 		{
-			var source = creep.pos.findClosestByPath(FIND_SOURCES);
-			if(creep.memory.source != undefined && creep.memory.role == "harvester")
-			{
-				source = Game.getObjectById(creep.memory.source);
-				Memory.Sources[creep.memory.source].harvesters[creep.name] = true;
-			}
-			
-			if(creep.harvest(source) == ERR_NOT_IN_RANGE)
-			{
-				creep.moveTo(source);
-			}
+		    if(!Utility.pickupEnergy(creep, 7))
+		    {
+    			var source = creep.pos.findClosestByPath(FIND_SOURCES);
+    			if(creep.memory.source != undefined && creep.memory.role == "harvester")
+    			{
+    				source = Game.getObjectById(creep.memory.source);
+    				Memory.Sources[creep.memory.source].harvesters[creep.name] = true;
+    			}
+    			
+    			if(creep.harvest(source) == ERR_NOT_IN_RANGE)
+    			{
+    				creep.moveTo(source);
+    			}
+		    }
 
 			var carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
@@ -30,11 +33,33 @@ module.exports =
     			{
     				filter: function(s)
     				{
-    					return s.structureType == STRUCTURE_EXTENSION && s.energyCapacity - s.energy > 0;
+					    var extensions = s.structureType == STRUCTURE_EXTENSION && s.energy < s.energyCapacity;
+					    var towers = s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity;
+					    //var storage = s.structureType == STRUCTURE_TOWER && _.sum(s.store) < s.storeCapacity;
+				    
+    					return extensions || towers;
     				}
     			});
-    			
-			if(!dest || Utility.getNumberOfHarvesters() < 2)
+    		
+    		if(Utility.getNumberOfHarvesters() < 2)
+    		{
+    		    dest = Game.spawns["Home"];
+    		}
+    		else
+			{
+			    if(!dest)
+			    {
+			        dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+        			{
+        				filter: function(s)
+        				{
+    					    return s.structureType == STRUCTURE_STORAGE;
+        				}
+        			});
+			    }
+			}
+			
+			if(!dest)
 			{
 			    dest = Game.spawns["Home"];
 			}
