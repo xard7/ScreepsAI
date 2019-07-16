@@ -17,14 +17,38 @@ module.exports =
 
 			//if(false)
 			{ // Extensins, storage, links
-				for(let i = 0; i < 4; i++)
+				for(let i = 1; i < 5; i++)
 				{
-					creep.room.createConstructionSite(Spawn.pos.x - 3 + i, Spawn.pos.y + 3, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(Spawn.pos.x - 3, Spawn.pos.y + 3 + i, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(Spawn.pos.x + 3 + i, Spawn.pos.y - 3, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(Spawn.pos.x + 3, Spawn.pos.y - 3 + i, STRUCTURE_EXTENSION);
+					for(let j = 0; j <= i; j++)
+					{
+						let xx = Spawn.pos.x - (i * 2); let yy = Spawn.pos.y - (j * 2);
+						let tt = terrain.get(xx, yy);
+						if( tt != TERRAIN_MASK_SWAMP)
+						{
+							creep.room.createConstructionSite(xx, yy, STRUCTURE_EXTENSION);
+						}
 
-					creep.room.createConstructionSite(Spawn.pos.x + 2 +  (i * 2), Spawn.pos.y + 2 + (i * 2), STRUCTURE_EXTENSION);
+						xx = Spawn.pos.x - (i * 2); yy = Spawn.pos.y + (j * 2);
+						tt = terrain.get(xx, yy);
+						if( tt != TERRAIN_MASK_SWAMP)
+						{
+							creep.room.createConstructionSite(xx, yy, STRUCTURE_EXTENSION);
+						}
+
+						xx = Spawn.pos.x + (i * 2); yy = Spawn.pos.y - (j * 2);
+						tt = terrain.get(xx, yy);
+						if( tt != TERRAIN_MASK_SWAMP)
+						{
+							creep.room.createConstructionSite(xx, yy, STRUCTURE_EXTENSION);
+						}
+
+						xx = Spawn.pos.x + (i * 2); yy = Spawn.pos.y + (j * 2);
+						tt = terrain.get(xx, yy);
+						if( tt != TERRAIN_MASK_SWAMP)
+						{
+							creep.room.createConstructionSite(xx, yy, STRUCTURE_EXTENSION);
+						}
+					}
 				}
 				
 				creep.room.createConstructionSite(Spawn.pos.x - 2, Spawn.pos.y - 2, STRUCTURE_STORAGE);

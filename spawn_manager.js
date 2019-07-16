@@ -197,10 +197,10 @@ const v5 = function(Spawner) // level 5
 
 	var minimalNumberOfUpgraders = 5;
 	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 1;
+	var minimalNumberOfBuilders = 2;
 	var minimalNumberOfPorters = 0;
 	
-	var cargo = Spawner.pos.findClosestByPath(FIND_MY_STRUCTURES,
+	var cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
 		{
 			filter: function(s)
 			{
