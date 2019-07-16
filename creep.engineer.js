@@ -10,8 +10,8 @@ module.exports =
 		}
 		if(creep.memory.plansDone == undefined || !creep.memory.plansDone)
 		{
-			var spawn = Game.spawns["Home"];
-			const terrain = Game.rooms[spawn.pos.roomName].getTerrain();
+			var Spawn = Game.spawns["Home"];
+			const terrain = Game.rooms[Spawn.pos.roomName].getTerrain();
 
 			creep.memory.plansDone = true;
 
@@ -19,15 +19,15 @@ module.exports =
 			{ // Extensins, storage, links
 				for(let i = 0; i < 4; i++)
 				{
-					creep.room.createConstructionSite(spawn.pos.x - 3 + i, spawn.pos.y + 3, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(spawn.pos.x - 3, spawn.pos.y + 3 + i, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(spawn.pos.x + 3 + i, spawn.pos.y - 3, STRUCTURE_EXTENSION);
-					creep.room.createConstructionSite(spawn.pos.x + 3, spawn.pos.y - 3 + i, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(Spawn.pos.x - 3 + i, Spawn.pos.y + 3, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(Spawn.pos.x - 3, Spawn.pos.y + 3 + i, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(Spawn.pos.x + 3 + i, Spawn.pos.y - 3, STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(Spawn.pos.x + 3, Spawn.pos.y - 3 + i, STRUCTURE_EXTENSION);
 
-					creep.room.createConstructionSite(spawn.pos.x + 2 +  (i * 2), spawn.pos.y + 2 + (i * 2), STRUCTURE_EXTENSION);
+					creep.room.createConstructionSite(Spawn.pos.x + 2 +  (i * 2), Spawn.pos.y + 2 + (i * 2), STRUCTURE_EXTENSION);
 				}
 				
-				creep.room.createConstructionSite(spawn.pos.x - 2, spawn.pos.y - 2, STRUCTURE_STORAGE);
+				creep.room.createConstructionSite(Spawn.pos.x - 2, Spawn.pos.y - 2, STRUCTURE_STORAGE);
 				
 				{
 				    var stor = creep.room.find(FIND_MY_STRUCTURES, 
@@ -50,11 +50,11 @@ module.exports =
 			}
 
 			{ // Roads.
-				var sources = creep.room.find(FIND_SOURCES);
 				var paths = [];
 				if(Memory.Roads == undefined)
 				{
 					// from sources
+				    var sources = creep.room.find(FIND_SOURCES);
 					for(let source of sources)
 					{
 	    				// road around source
@@ -64,7 +64,7 @@ module.exports =
 	    				    creep.room.createConstructionSite(roadPos.x, roadPos.y, STRUCTURE_ROAD);
 	    				}
 	    				
-						let p = creep.room.findPath(spawn.pos, source.pos, 
+						let p = creep.room.findPath(Spawn.pos, source.pos, 
 						    {
 						        ignoreRoads: true,
 						        ignoreCreeps: true,
@@ -73,6 +73,27 @@ module.exports =
 						    });
 						paths.push(p)
 					}
+					
+					// from minerals
+					var minerals = creep.room.find(FIND_MINERALS)
+					for(let mineral of minerals)
+					{
+					    let roadList = Utility.getNeighborFields(mineral.pos);
+					    for(let roadPos of roadList)
+	    				{
+	    				    creep.room.createConstructionSite(roadPos.x, roadPos.y, STRUCTURE_ROAD);
+	    				}
+	    				
+	    				let p = creep.room.findPath(Spawn.pos, source.pos, 
+						    {
+						        ignoreRoads: true,
+						        ignoreCreeps: true,
+						        swampCost: 1,
+						        serialize: true
+						    });
+						paths.push(p)
+					}
+					
 					// from controller
 					{
 						// road around controller
@@ -82,7 +103,7 @@ module.exports =
 	    				    creep.room.createConstructionSite(roadPos.x, roadPos.y, STRUCTURE_ROAD);
 	    				}
 
-						let p = creep.room.findPath(spawn.pos, creep.room.controller.pos,
+						let p = creep.room.findPath(Spawn.pos, creep.room.controller.pos,
 						    {
 						        ignoreRoads: true, 
 						        ignoreCreeps: true,

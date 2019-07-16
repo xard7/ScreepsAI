@@ -1,3 +1,5 @@
+var Utility = require("utility");
+
 module.exports =
 {
 	run: function(creep)

@@ -70,5 +70,109 @@ module.exports =
         {
 	        return false;
         }
-	}
+	},
+	
+	executeMemoryStuff : function()
+	{
+	    var Spawn = Game.spawns["Home"];
+	    
+    	if(Memory.Links_tmp == undefined)
+    	{
+    	    Memory.Links_tmp = {};
+    	    var links = Spawn.room.find(FIND_MY_STRUCTURES,
+        	    {
+        	        filter:
+        	        {
+        	            structureType: STRUCTURE_LINK
+        	        }
+        	    });
+        	for(let link of links)
+        	{
+        	    let cargo = link.pos.findInRange(FIND_MY_STRUCTURES, 3,
+        	        {
+        	            filter:
+        	            {
+        	                structureType: STRUCTURE_STORAGE
+        	            }
+        	        });
+        	    if(Object.keys(cargo).length != 0)
+        	    {
+        	        Memory.Links_tmp[link.id] = true;
+        	    }
+        	}
+    	}
+    	
+    	if(Memory.Sources == undefined)
+    	{
+        	Memory.Sources = {};
+    		var Sources = Spawn.room.find(FIND_SOURCES);
+    		for(let source of Sources)
+    		{
+    			Memory.Sources[source.id] = 
+    			{
+    				availableFields: Utility.getNumberOfAvailableFields(source.pos),
+    				harvesters: {},
+    			};
+    		}
+    	}
+    	
+    	if(Memory.Towers == undefined)
+    	{
+    	    Memory.Towers = {};
+    	    var towers = Spawn.room.find(FIND_MY_STRUCTURES,
+        	    {
+        	        filter:
+        	        {
+        	            structureType: STRUCTURE_TOWER
+        	        }
+        	    });
+            for(let tower of towers)
+            {
+                Memory.Towers[tower.id] = true;
+            }
+    	}
+    	
+    	if(Memory.Links == undefined)
+    	{
+    	    Memory.Links = {};
+    	    var links = Spawn.room.find(FIND_MY_STRUCTURES,
+        	    {
+        	        filter:
+        	        {
+        	            structureType: STRUCTURE_LINK
+        	        }
+        	    });
+        	    
+        	for(let link of links)
+        	{
+        	    Memory.Links[link.id] = true;
+        	}
+    	}
+    
+    	//memory cleanup
+    	{
+    	    for (let idx in Memory.creeps)
+    	    {
+    	        if (Game.creeps[idx] == undefined)
+    	        {
+    	            delete Memory.creeps[idx];
+    	        }
+    		}
+    	    for (let idx in Memory.Sources)
+    	    {
+    	    	for(let hName in Memory.Sources[idx].harvesters)
+    	    	{
+    		        if (Game.creeps[hName] == undefined)
+    		        {
+    		            delete Memory.Sources[idx].harvesters[hName];
+    		        }
+    	    	}
+    		}
+    	}
+    	
+    	//if(Memory.Links_tmp != undefined) delete Memory.Links_tmp;
+	    //if(Memory.Sources != undefined) delete Memory.Sources;
+    	//if(Memory.Towers != undefined) delete Memory.Towers;
+    	//if(Memory.Links != undefined) delete Memory.Links;
+	},
 };

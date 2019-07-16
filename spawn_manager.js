@@ -199,6 +199,18 @@ const v5 = function(Spawner) // level 5
 	var minimalNumberOfEngineers = 1;
 	var minimalNumberOfBuilders = 1;
 	var minimalNumberOfPorters = 0;
+	
+	var cargo = Spawner.pos.findClosestByPath(FIND_MY_STRUCTURES,
+		{
+			filter: function(s)
+			{
+				return s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100000;
+			}
+		});
+	if(cargo)
+	{
+	    minimalNumberOfPorters = 1;
+	}
 
 	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
 	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
