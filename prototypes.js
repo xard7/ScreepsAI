@@ -42,19 +42,19 @@ module.exports = function()
 		}
 		else
 		{
-			var e = this.room.energyAvailable;
-			var numberOfParts = Math.floor(e / 200);
-			if(numberOfParts < 4)
+			var e = this.room.energyAvailable * 0.5;
+			var numberOfParts = Math.floor(e / 250);
+			if(numberOfParts < 2)
 			{
 				body = [WORK, CARRY, MOVE, MOVE];
 			}
 			else
 			{
-	            for (let i = 0; i < numberOfParts; i++)
+	            for (let i = 0; i < numberOfParts * 0.5; i++)
 	            {
 	                body.push(WORK);
 	            }
-	            for (let i = 0; i < numberOfParts; i++)
+	            for (let i = 0; i < numberOfParts * 0.7; i++)
 	            {
 	                body.push(CARRY);
 	            }
