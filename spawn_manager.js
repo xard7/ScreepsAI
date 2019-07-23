@@ -197,7 +197,7 @@ const v5 = function(Spawner) // level 5
 
 	var minimalNumberOfUpgraders = 5;
 	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 2;
+	var minimalNumberOfBuilders = 1;
 	var minimalNumberOfPorters = 0;
 	
 	var cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
@@ -261,7 +261,80 @@ const v5 = function(Spawner) // level 5
 	}
 }
 
-const v6 = v5;
+const v6 = function(Spawner) // level 6
+{
+	var minimalNumberOfHarverters = 0;
+	for(let idx in Memory.Sources)
+	{
+		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
+	}
+
+	var minimalNumberOfUpgraders = 5;
+	var minimalNumberOfEngineers = 1;
+	var minimalNumberOfBuilders = 2;
+	var minimalNumberOfPorters = 0;
+	
+	var cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
+		{
+			filter: function(s)
+			{
+				return s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100000;
+			}
+		});
+	if(cargo)
+	{
+	    minimalNumberOfPorters = 2;
+	}
+
+	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
+	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
+	var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
+	var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
+	var numberOfPorters = _.sum(Game.creeps, (c) => c.memory.role == "porter");
+
+	if(numberOfHarvesters < minimalNumberOfHarverters)
+	{
+		var sourceId = undefined;
+		for(let idx in Memory.Sources)
+		{
+			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
+			if(sH < Memory.Sources[idx].availableFields)
+			{
+				sourceId = idx;
+				break;
+			}
+		}
+		if(numberOfHarvesters > 3)
+		{
+		    Spawner.spawnCustomCreep("Harvester", "harvester", "WWWWCCCCMMMMMM", {source: sourceId});
+		}
+		else if(numberOfHarvesters > 2)
+		{
+		    Spawner.spawnCustomCreep("Harvester", "harvester", "WWCCMM", {source: sourceId});
+		}
+		else
+		{
+		    Spawner.spawnCustomCreep("Harvester", "harvester", "WCMM", {source: sourceId});
+		}
+	}
+	else if(numberOfUpgraders < minimalNumberOfUpgraders)
+	{
+		Spawner.spawnCustomCreep("Upgrader", "upgrader", "WWWWCCCCMMMMMM");
+	}
+	else if(numberOfEngineers < minimalNumberOfEngineers)
+	{
+		Spawner.spawnCustomCreep("Engineer", "engineer", "WWWWCCCCMMMMMM");
+	}
+	else if(numberOfBuilders < minimalNumberOfBuilders)
+	{
+		Spawner.spawnCustomCreep("Builder", "builder", "WWWWCCCCMMMMM");
+	}
+	else if(numberOfPorters < minimalNumberOfPorters)
+	{
+		Spawner.spawnCustomCreep("Porter", "porter", "CCCCCCCMMMMM");
+	}
+}
+
 const v7 = v6;
 const v8 = v7;
 
