@@ -8,7 +8,7 @@ module.exports =
 		{
 		    if(!Utility.pickupEnergy(creep, 7))
 		    {
-    			var source = creep.pos.findClosestByPath(FIND_SOURCES);
+    			let source = creep.pos.findClosestByPath(FIND_SOURCES);
     			if(creep.memory.source != undefined && creep.memory.role == "harvester")
     			{
     				source = Game.getObjectById(creep.memory.source);
@@ -21,7 +21,7 @@ module.exports =
     			}
 		    }
 
-			var carry = _.sum(creep.carry);
+			const carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
 			{
 				creep.memory.bussy = true;
@@ -29,13 +29,12 @@ module.exports =
 		}
 		else
 		{
-    	    var dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+    	    let dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
     			{
     				filter: function(s)
     				{
-					    var extensions = s.structureType == STRUCTURE_EXTENSION && s.energy < s.energyCapacity;
-					    var towers = s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity;
-					    //var storage = s.structureType == STRUCTURE_TOWER && _.sum(s.store) < s.storeCapacity;
+					    const extensions = s.structureType == STRUCTURE_EXTENSION && s.energy < s.energyCapacity;
+					    const towers = s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity;
 				    
     					return extensions || towers;
     				}

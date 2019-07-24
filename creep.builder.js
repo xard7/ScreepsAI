@@ -8,7 +8,7 @@ module.exports =
 		{
 		    if(!Utility.pickupEnergy(creep, 7))
 		    {
-		    	var storage = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+		    	const storage = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
 		    		{
 		    			filter: function(s)
 		    			{
@@ -24,7 +24,7 @@ module.exports =
 		    	}
 		    	else
 		    	{
-	    			var source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
+	    			let source = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
 	    			if(source.energy > 100)
 	    			{
 	    				if(creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
@@ -43,7 +43,7 @@ module.exports =
 	    		}
 		    }
 
-			var carry = _.sum(creep.carry);
+			const carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
 			{
 				creep.memory.bussy = true;
@@ -51,8 +51,8 @@ module.exports =
 		}
 		else
 		{
-		    var isRepairing = false;
-		    var constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES,
+		    let isRepairing = false;
+		    let constructionSite = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES,
 				{
 					filter: function(s)
 					{
@@ -66,7 +66,6 @@ module.exports =
 				    {
 				        filter: function(s)
         				{
-					    const terrain = Game.rooms[s.pos.roomName].getTerrain();
         					return s.hits < s.hitsMax  && creep.memory.role == "builder";
         				}
 				        
@@ -82,7 +81,7 @@ module.exports =
 
 			if(constructionSite)
 			{
-			    var r = OK;
+			    let r = OK;
 			    if(isRepairing)
 			    {
 			        r = creep.repair(constructionSite);

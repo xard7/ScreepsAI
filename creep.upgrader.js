@@ -4,7 +4,7 @@ module.exports =
 	{
 		if(!creep.memory.bussy)
 		{
-			var dest = Game.spawns["Home"];
+			let dest = Game.spawns["Home"];
 			if(dest.energy == dest.energyCapacity)
 			{
 				if(creep.withdraw(dest, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
@@ -18,8 +18,8 @@ module.exports =
 					{
 						filter: function(s)
         				{
-        				    var cargo = s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 0;
-        					var links = s.structureType == STRUCTURE_LINK && s.energy > 0;
+        				    const cargo = s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 0;
+        					const links = s.structureType == STRUCTURE_LINK && s.energy > 0;
         				    
         					return cargo || links;
         				}
@@ -41,7 +41,7 @@ module.exports =
 				}
 			}
 
-			var carry = _.sum(creep.carry);
+			const carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
 			{
 				creep.memory.bussy = true;

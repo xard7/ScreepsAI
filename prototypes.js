@@ -1,6 +1,8 @@
 module.exports = function()
 {
-	StructureSpawn.prototype.spawnCustomCreep = function(name, roleName, bodyName, opt)
+	const CONST = require("consts");
+
+	StructureSpawn.prototype.spawnCustomCreep = function(creepName, roleName, bodyName, opt)
 	{
 		if(this.memory.uniqueCounter == undefined)
 		{
@@ -8,7 +10,7 @@ module.exports = function()
 		}
 		this.memory.uniqueCounter ++;
 
-		var body = [];
+		let body = [];
 		if(typeof(bodyName) == "string")
 		{
 			for(let s of bodyName)
@@ -42,30 +44,26 @@ module.exports = function()
 		}
 		else
 		{
-			var e = this.room.energyAvailable * 0.5;
-			var numberOfParts = Math.floor(e / 250);
-			if(numberOfParts < 2)
+			let energyAvailable = this.room.energyAvailable;
+			
+			for(let i = 0; i < 3; i++)
 			{
-				body = [WORK, CARRY, MOVE, MOVE];
+			    if(energyAvailable - 250 > 0)
+			    {
+			        body.push(WORK);
+			        body.push(CARRY);
+			        body.push(MOVE);
+			        body.push(MOVE);
+			        energyAvailable -= 250;
+			    }
+			    else
+			    {
+			        break;
+			    }
 			}
-			else
-			{
-	            for (let i = 0; i < numberOfParts * 0.5; i++)
-	            {
-	                body.push(WORK);
-	            }
-	            for (let i = 0; i < numberOfParts * 0.7; i++)
-	            {
-	                body.push(CARRY);
-	            }
-	            for (let i = 0; i < numberOfParts; i++)
-	            {
-	                body.push(MOVE);
-	            }
-	        }
 		}
 
-		var context = 
+		const context = 
 		{
 			memory: 
 			{
@@ -78,41 +76,84 @@ module.exports = function()
 			Object.assign(context.memory, opt);
 		}
 
-		var retErr;
-		var creepName = name + this.memory.uniqueCounter;
-		retErr =  this.spawnCreep(body, creepName, context);
+		let retErr;
+		const creepFullName = creepName + this.memory.uniqueCounter;
+		retErr =  this.spawnCreep(body, creepFullName, context);
 
 		switch(retErr)
 		{
 			case OK:
-				console.log("Creep with name " + creepName + " spawned successfully.");
-				return Game.creeps[creepName];
+				console.log("Creep with name " + creepFullName + " spawned successfully.");
+				return creepFullName;
 			break;
 
 			case ERR_NOT_OWNER:
-				this.memory.uniqueCounter--;
 				console.log("Player are not the owner of this spawn!");
 			break;
 
 			case ERR_NAME_EXISTS:
-				this.memory.uniqueCounter--;
-				console.log("Creep with name " + creepName + " arleady exists!");
+				console.log("Creep with name " + creepFullName + " arleady exists!");
 			break;
 
 			case ERR_INVALID_ARGS:
-				this.memory.uniqueCounter--;
 				console.log("Body is not properly described or name was not provided!");
 			break;
 
 			case ERR_RCL_NOT_ENOUGH:
-				this.memory.uniqueCounter--;
 				console.log("Player Room Controller level is insufficient to use this spawn!");
 			break;
 
 			case ERR_BUSY:
 			case ERR_NOT_ENOUGH_ENERGY:
-				this.memory.uniqueCounter--;
 			break;
 		}
+
+		this.memory.uniqueCounter--;
+		return false;
 	};
+
+	Creep.prototype.checkDrop = function()
+	{
+		const tombstone = this.pos.findClosestByRange(FIND_TOMBSTONES,
+            {
+    	        filter: function(t)
+    			{
+    				let path = this.pos.findPathTo(t);
+    				return (path.length * 1.3 < t.tickToDecay);
+    			}
+    		});
+		if(tombstone)
+		{
+			return {type: CONST.eDropCheck.TOMBSTONE, id: tombstone.id};
+		}
+		else
+		{
+			const droppedResource = this.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
+            {
+    	        filter: function(r)
+    			{
+    				let path = this.pos.findPathTo(r);
+    				return (path.length * 1.3 < r.amount);
+    			}
+    		});
+
+	        if(droppedResource)
+	        {
+	    	    return {type: CONST.eDropCheck.RESOURCE, id : droppedResource.id};
+	        }
+	    }
+
+	    return {type: CONST.eDropCheck.NONE, id: -1};
+	},
+
+	Creep.prototype.getAndSavePath = function(target)
+	{
+		const path = this.pos.findPathTo(target, {serialize: true});
+		if(path.length)
+		{
+			this.memory.currentPath = path;
+			return true;
+		}
+		return false;
+	}
 };

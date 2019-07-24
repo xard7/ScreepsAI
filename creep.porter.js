@@ -8,7 +8,7 @@ module.exports =
 		{
 		    if(!Utility.pickupEnergy(creep, 7))
 		    {
-    			var cargo = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
+    			const cargo = creep.pos.findClosestByPath(FIND_MY_STRUCTURES,
     			    {
     			        filter: function(s)
     			        {
@@ -22,7 +22,7 @@ module.exports =
     			}
 		    }
 
-			var carry = _.sum(creep.carry);
+			const carry = _.sum(creep.carry);
 			if(carry == creep.carryCapacity)
 			{
 				creep.memory.bussy = true;
@@ -30,13 +30,13 @@ module.exports =
 		}
 		else
 		{
-    		var dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+    		const dest = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, 
     			{
     				filter: function(s)
     				{
-    				    var extensions = s.structureType == STRUCTURE_EXTENSION && s.energy < s.energyCapacity;
-    					var towers = s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity;
-    					var links = s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity;
+    				    const extensions = s.structureType == STRUCTURE_EXTENSION && s.energy < s.energyCapacity;
+    					const towers = s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity;
+    					const links = s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity;
     				    
     					return extensions || towers || links;
     				}

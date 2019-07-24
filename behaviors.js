@@ -1,72 +1,37 @@
 /***************************************************************
 
-creep.memory = 
+creep.memory.Behavior = 
 {
-	behaviorState 		: bState;
-	currentPath 		: path;
-	behaviorWeight 		: number;
+	State 		: bState;
+	currentPath : path;
+	Weight 		: number;
 }
 
 ****************************************************************/
 
-const bState =
-{
-	IDLE 		= 0,
-	PICKUP_DROP	= 2,
-	GOTO_DROP	= 1,
-};
-
-const dropCheck = 
-{
-	NONE 		= 0,
-	TOMBSTONE 	= 1,
-	RESOURCE	= 2,
-};
+const CONST = require("consts");
 
 module.exports =
 {
-	checkDrop: function(creep)
+	idle: function(creep)
 	{
-		var tombstone = creep.pos.findClosestByRange(FIND_TOMBSTONES,
-            {
-    	        filter: function(t)
-    			{
-    				let path = creep.pos.findPathTo(t);
-    				return (path.length * 1.3 < t.tickToDecay);
-    			}
-    		});
-		if(tombstone)
+
+	},
+
+	run: function(creep)
+	{
+		if(creep.memory.Behavior == undefined)
 		{
-			return {type: dropCheck.TOMBSTONE, id: tombstone.id};
+			creep.memory.Behavior = 
+			{
+				State: CONST.bState.IDLE,
+				currentPath: "",
+				Weight: 0
+			};
 		}
 		else
 		{
-			var droppedResource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
-            {
-    	        filter: function(r)
-    			{
-    				let path = creep.pos.findPathTo(r);
-    				return (path.length * 1.3 < r.amount);
-    			}
-    		});
 
-	        if(droppedResource)
-	        {
-	    	    return {type: dropCheck.RESOURCE, id : droppedResource.id};
-	        }
-	    }
-
-	    return {type: dropCheck.NONE, id: -1};
-	},
-
-	getAndSavePath: function(creep, target)
-	{
-		var path = creep.pos.findPathTo(target, {serialize: true});
-		if(path.length)
-		{
-			creep.memory.currentPath = path;
-			return true;
 		}
-		return false;
 	}
 };

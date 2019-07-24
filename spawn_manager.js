@@ -1,342 +1,174 @@
-const v1 = function(Spawner) // level 1
-{
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
+const HARVESTER = 0;
+const UPGRADER 	= 1;
+const ENGINEER	= 2;
+const BUILDER	= 3;
+const PORTER	= 4;
+const MULTI 	= 5;
+
+const v1 = 
+[
+	// HARVESTERS
 	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
-
-	var minimalNumberOfUpgraders = 1;
-
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-
-
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
+		minimalNumberOfCreeps: 0,
+		func: function(Spawner, minimalNumberOfCreeps) 
 		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
+			let minimalNumberOfHarverters = 0;
+			for(let idx in Memory.Sources)
 			{
-				sourceId = idx;
-				break;
+				minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
 			}
-		}
-		
-	    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
-	{
-		Spawner.spawnCustomCreep("U", "upgrader", "WCMM");
-	}
-}
 
-const v2 = function(Spawner) // level 2
-{
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
-	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
-
-	var minimalNumberOfUpgraders = 2;
-
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-
-
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
-		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
+			const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
+			if(numberOfCreeps < minimalNumberOfHarverters - 1)
 			{
-				sourceId = idx;
-				break;
+				let sourceId = undefined;
+				for(let idx in Memory.Sources)
+				{
+					let sH = Object.keys(Memory.Sources[idx].harvesters).length;
+					if(sH < Memory.Sources[idx].availableFields)
+					{
+						sourceId = idx;
+						break;
+					}
+				}
+
+			    return Spawner.spawnCustomCreep("H", "harvester", undefined, {source: sourceId})
 			}
+			return false;
 		}
-		if(numberOfHarvesters > 2)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWCCMM", {source: sourceId});
-		}
-		else
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-		}
-	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
+	},
+
+	// UPGRADERS
 	{
-		Spawner.spawnCustomCreep("U", "upgrader", "WWCCMM");
-	}
-}
-
-const v3 = function(Spawner) // level 3
-{
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
-	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
-
-	var minimalNumberOfUpgraders = 6;
-	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 1;
-
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-	var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
-	var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
-
-
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
+		minimalNumberOfCreeps: 1,
+		func: function(Spawner, minimalNumberOfCreeps) 
 		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
+			const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
+			if(numberOfCreeps < minimalNumberOfCreeps)
 			{
-				sourceId = idx;
-				break;
+				return Spawner.spawnCustomCreep("U", "upgrader");
 			}
-		}
-		if(numberOfHarvesters > 3)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWWCCCMMM", {source: sourceId});
-		}
-		else if(numberOfHarvesters > 1)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWCCMM", {source: sourceId});
-		}
-		else
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-		}
-	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
-	{
-		Spawner.spawnCustomCreep("U", "upgrader", "WWWCCCMMM");
-	}
-	else if(numberOfEngineers < minimalNumberOfEngineers)
-	{
-		Spawner.spawnCustomCreep("E", "engineer", "WWWCCCMMM");
-	}
-	else if(numberOfBuilders < minimalNumberOfBuilders)
-	{
-		Spawner.spawnCustomCreep("B", "builder", "WWWCCCMMM");
-	}
-}
 
-const v4 = function(Spawner) // level 4
+			return false;
+		}
+	},
+
+	// ENGINEERS
+	{
+		minimalNumberOfCreeps: 0,
+		func: function(Spawner, minimalNumberOfCreeps)
+		{
+			return false;
+		}
+	},
+
+	// BUILDERS
+	{
+		minimalNumberOfCreeps: 0,
+		func: function(Spawner, minimalNumberOfCreeps)
+		{
+			return false;
+		}
+	},
+
+	// PORTERS
+	{
+		minimalNumberOfCreeps: 0,
+		func: function(Spawner, minimalNumberOfCreeps)
+		{
+			return false;
+		}
+	},
+
+	// MULTI
+	{
+		minimalNumberOfCreeps: 0,
+		func: function(Spawner, minimalNumberOfCreeps)
+		{
+			return false;
+		}
+	}
+];
+
+var v2 = v1;
 {
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
-	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
+	v2[UPGRADER].minimalNumberOfCreeps = 2;
+};
 
-	var minimalNumberOfUpgraders = 5;
-	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 1;
-
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-	var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
-	var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
-
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
-		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
-			{
-				sourceId = idx;
-				break;
-			}
-		}
-		if(numberOfHarvesters > 3)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWWWCCCCMMMM", {source: sourceId});
-		}
-		else if(numberOfHarvesters > 2)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWCCMM", {source: sourceId});
-		}
-		else
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-		}
-	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
-	{
-		Spawner.spawnCustomCreep("U", "upgrader", "WWWWCCCCMMMM");
-	}
-	else if(numberOfEngineers < minimalNumberOfEngineers)
-	{
-		Spawner.spawnCustomCreep("E", "engineer", "WWWWCCCMMMM");
-	}
-	else if(numberOfBuilders < minimalNumberOfBuilders)
-	{
-		Spawner.spawnCustomCreep("B", "builder", "WWWWCCCMMMM");
-	}
-}
-
-const v5 = function(Spawner) // level 5
+var v3 = v2;
 {
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
+	v3[UPGRADER].minimalNumberOfCreeps = 5;
+	v3[ENGINEER].minimalNumberOfCreeps = 1;
+	v3[ENGINEER].func = function(Spawner, minimalNumberOfCreeps) 
 	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
-
-	var minimalNumberOfUpgraders = 5;
-	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 1;
-	var minimalNumberOfPorters = 0;
-	
-	var cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
+		if(numberOfCreeps < minimalNumberOfCreeps)
 		{
-			filter: function(s)
-			{
-				return s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100000;
-			}
-		});
-	if(cargo)
-	{
-	    minimalNumberOfPorters = 1;
-	}
-
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-	var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
-	var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
-	var numberOfPorters = _.sum(Game.creeps, (c) => c.memory.role == "porter");
-
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
-		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
-			{
-				sourceId = idx;
-				break;
-			}
+			return Spawner.spawnCustomCreep("E", "engineer");
 		}
-		if(numberOfHarvesters > 3)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWWWCCCCMMMM", {source: sourceId});
-		}
-		else if(numberOfHarvesters > 2)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWCCMM", {source: sourceId});
-		}
-		else
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-		}
-	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
-	{
-		Spawner.spawnCustomCreep("U", "upgrader", "WWWWCCCCMMMM");
-	}
-	else if(numberOfEngineers < minimalNumberOfEngineers)
-	{
-		Spawner.spawnCustomCreep("E", "engineer", "WWWWCCCMMMM");
-	}
-	else if(numberOfBuilders < minimalNumberOfBuilders)
-	{
-		Spawner.spawnCustomCreep("B", "builder", "WWWWCCCMMMM");
-	}
-	else if(numberOfPorters < minimalNumberOfPorters)
-	{
-		Spawner.spawnCustomCreep("P", "porter", "CCCCCCCMMMMM");
-	}
-}
 
-const v6 = function(Spawner) // level 6
+		return false;
+	};
+
+	v3[BUILDER].minimalNumberOfCreeps = 1;
+	v3[BUILDER].func = function(Spawner, minimalNumberOfCreeps) 
+	{
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "builder");
+		if(numberOfCreeps < minimalNumberOfCreeps)
+		{
+			return Spawner.spawnCustomCreep("B", "builder");
+		}
+
+		return false;
+	};
+};
+
+var v4 = v3;
+var v5 = v4;
+
+var v6 = v5;
 {
-	var minimalNumberOfHarverters = 0;
-	for(let idx in Memory.Sources)
+	v6[PORTER].minimalNumberOfCreeps = 2;
+	v6[PORTER].func = function(Spawner, minimalNumberOfCreeps)
 	{
-		minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
-	}
-
-	var minimalNumberOfUpgraders = 5;
-	var minimalNumberOfEngineers = 1;
-	var minimalNumberOfBuilders = 2;
-	var minimalNumberOfPorters = 0;
-	
-	var cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
+		let minimalNumberOfPorters = 0;
+		const cargo = Spawner.pos.findClosestByRange(FIND_MY_STRUCTURES,
 		{
 			filter: function(s)
 			{
 				return s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 200000;
 			}
 		});
-	if(cargo)
-	{
-	    minimalNumberOfPorters = 2;
-	}
+		if(cargo)
+		{
+		    minimalNumberOfPorters = minimalNumberOfCreeps;
+		}
 
-	var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-	var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == "upgrader");
-	var numberOfEngineers = _.sum(Game.creeps, (c) => c.memory.role == "engineer");
-	var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == "builder");
-	var numberOfPorters = _.sum(Game.creeps, (c) => c.memory.role == "porter");
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "porter");
+		if(numberOfCreeps < minimalNumberOfPorters)
+		{
+			return Spawner.spawnCustomCreep("B", "porter", "CCCCCCCMMMMM");
+		}
 
-	if(numberOfHarvesters < minimalNumberOfHarverters)
-	{
-		var sourceId = undefined;
-		for(let idx in Memory.Sources)
-		{
-			var sH = Object.keys(Memory.Sources[idx].harvesters).length;
-			if(sH < Memory.Sources[idx].availableFields)
-			{
-				sourceId = idx;
-				break;
-			}
-		}
-		if(numberOfHarvesters > 3)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", undefined, {source: sourceId});
-		}
-		else if(numberOfHarvesters > 2)
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WWCCMM", {source: sourceId});
-		}
-		else
-		{
-		    Spawner.spawnCustomCreep("H", "harvester", "WCMM", {source: sourceId});
-		}
+		return false;
 	}
-	else if(numberOfUpgraders < minimalNumberOfUpgraders)
-	{
-		Spawner.spawnCustomCreep("U", "upgrader");
-	}
-	else if(numberOfEngineers < minimalNumberOfEngineers)
-	{
-		Spawner.spawnCustomCreep("E", "engineer");
-	}
-	else if(numberOfBuilders < minimalNumberOfBuilders)
-	{
-		Spawner.spawnCustomCreep("B", "builder");
-	}
-	else if(numberOfPorters < minimalNumberOfPorters)
-	{
-		Spawner.spawnCustomCreep("P", "porter", "CCCCCCCMMMMM");
-	}
-}
+};
 
-const v7 = v6;
-const v8 = v7;
+var v7 = v6;
+{
+	v7[MULTI].minimalNumberOfCreeps = 0;
+	v7[MULTI].func = function(Spawner, minimalNumberOfCreeps)
+	{
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "multi");
+		if(numberOfCreeps < minimalNumberOfCreeps)
+		{
+			return Spawner.spawnCustomCreep("MM", "multi", "M");
+		}
+		return false;
+	};
+};
+
+var v8 = v7;
 
 module.exports =
 {	

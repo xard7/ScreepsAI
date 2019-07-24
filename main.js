@@ -1,21 +1,32 @@
-require("prototypes")();
-var Utility = require("utility");
+const CONST = require("consts");
 
-var spawnManager = require("spawn_manager");
-var roleHarvester = require("creep.harvester");
-var roleUpgrader = require("creep.upgrader");
-var roleEngineer = require("creep.engineer");
-var roleBuilder = require("creep.builder");
-var rolePorter = require("creep.porter");
-var roleTower = require("structure.tower");
-var roleLink = require("structure.link");
+require("prototypes")();
+const Utility = require("utility");
+
+const spawnManager = require("spawn_manager");
+const roleCreep = require("behaviors");
+
+const roleHarvester = require("creep.harvester");
+const roleUpgrader = require("creep.upgrader");
+const roleEngineer = require("creep.engineer");
+const roleBuilder = require("creep.builder");
+const rolePorter = require("creep.porter");
+const roleTower = require("structure.tower");
+const roleLink = require("structure.link");
 
 module.exports.loop = function()
 {
     Utility.executeMemoryStuff();
 
-    var Spawn = Game.spawns["Home"];
-	spawnManager.run[Spawn.room.controller.level - 1](Spawn);
+    const Spawner = Game.spawns["Home"];
+	const spawnFuncs = spawnManager.run[Spawner.room.controller.level - 1];
+	for(let i = 0; i < spawnFuncs.length; i++)
+	{
+		if(spawnFuncs[i].func(Spawner, spawnFuncs[i].minimalNumberOfCreeps))
+		{
+			break;
+		}
+	}
 	    
 	for(let towerId in Memory.Towers)
 	{
@@ -31,7 +42,7 @@ module.exports.loop = function()
 
 	for(let idx in Game.creeps)
 	{
-		var creep = Game.creeps[idx];
+		let creep = Game.creeps[idx];
 
 		if(Utility.getNumberOfHarvesters() == 0)
 		{
@@ -68,6 +79,12 @@ module.exports.loop = function()
 				case "porter":
 				{
 					rolePorter.run(creep);
+				}
+				break;
+
+				case "multi":
+				{
+
 				}
 				break;
 			}

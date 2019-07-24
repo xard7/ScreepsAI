@@ -4,7 +4,7 @@ module.exports =
     {
         if(Memory.Links_tmp[link.id])
         {
-            var l = link.pos.findClosestByPath(FIND_MY_STRUCTURES,
+            const l = link.pos.findClosestByPath(FIND_MY_STRUCTURES,
         		{
         			filter: function(s)
         			{

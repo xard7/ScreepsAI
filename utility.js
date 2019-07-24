@@ -3,7 +3,7 @@ module.exports =
 	getNumberOfAvailableFields: function(pos)
 	{
 		const terrain = Game.rooms[pos.roomName].getTerrain();
-		var num = 0;
+		let num = 0;
 		for(let x = (pos.x - 1); x <= (pos.x + 1); x++)
 		{
 			for(let y = (pos.y - 1); y <= (pos.y + 1); y++)
@@ -21,7 +21,7 @@ module.exports =
 	getNeighborFields: function(pos)
 	{
 	    const terrain = Game.rooms[pos.roomName].getTerrain();
-	    var retArray = [];
+	    let retArray = [];
 		for(let _x = (pos.x - 1); _x <= (pos.x + 1); _x++)
 		{
 			for(let _y = (pos.y - 1); _y <= (pos.y + 1); _y++)
@@ -51,7 +51,7 @@ module.exports =
 	
 	pickupEnergy: function(creep, range)
 	{
-	    var droppedSource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
+	    const droppedSource = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
             {
     	        filter: function(resource)
     			{
@@ -74,12 +74,12 @@ module.exports =
 	
 	executeMemoryStuff : function()
 	{
-	    var Spawn = Game.spawns["Home"];
+	    const Spawner = Game.spawns["Home"];
 	    
     	if(Memory.Links_tmp == undefined)
     	{
     	    Memory.Links_tmp = {};
-    	    var links = Spawn.room.find(FIND_MY_STRUCTURES,
+    	    const links = Spawner.room.find(FIND_MY_STRUCTURES,
         	    {
         	        filter:
         	        {
@@ -88,7 +88,7 @@ module.exports =
         	    });
         	for(let link of links)
         	{
-        	    let cargo = link.pos.findInRange(FIND_MY_STRUCTURES, 3,
+        	    const cargo = link.pos.findInRange(FIND_MY_STRUCTURES, 3,
         	        {
         	            filter:
         	            {
@@ -105,7 +105,7 @@ module.exports =
     	if(Memory.Sources == undefined)
     	{
         	Memory.Sources = {};
-    		var Sources = Spawn.room.find(FIND_SOURCES);
+    		const Sources = Spawner.room.find(FIND_SOURCES);
     		for(let source of Sources)
     		{
     			Memory.Sources[source.id] = 
@@ -119,7 +119,7 @@ module.exports =
     	if(Memory.Towers == undefined)
     	{
     	    Memory.Towers = {};
-    	    var towers = Spawn.room.find(FIND_MY_STRUCTURES,
+    	    const towers = Spawner.room.find(FIND_MY_STRUCTURES,
         	    {
         	        filter:
         	        {
@@ -135,7 +135,7 @@ module.exports =
     	if(Memory.Links == undefined)
     	{
     	    Memory.Links = {};
-    	    var links = Spawn.room.find(FIND_MY_STRUCTURES,
+    	    const links = Spawner.room.find(FIND_MY_STRUCTURES,
         	    {
         	        filter:
         	        {
