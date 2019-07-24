@@ -90,12 +90,12 @@ const v1 =
 	}
 ];
 
-var v2 = v1;
+const v2 = v1;
 {
 	v2[UPGRADER].minimalNumberOfCreeps = 2;
 };
 
-var v3 = v2;
+const v3 = v2;
 {
 	v3[UPGRADER].minimalNumberOfCreeps = 5;
 	v3[ENGINEER].minimalNumberOfCreeps = 1;
@@ -123,10 +123,10 @@ var v3 = v2;
 	};
 };
 
-var v4 = v3;
-var v5 = v4;
+const v4 = v3;
+const v5 = v4;
 
-var v6 = v5;
+const v6 = v5;
 {
 	v6[PORTER].minimalNumberOfCreeps = 2;
 	v6[PORTER].func = function(Spawner, minimalNumberOfCreeps)
@@ -154,7 +154,7 @@ var v6 = v5;
 	}
 };
 
-var v7 = v6;
+const v7 = v6;
 {
 	v7[MULTI].minimalNumberOfCreeps = 0;
 	v7[MULTI].func = function(Spawner, minimalNumberOfCreeps)
@@ -168,7 +168,7 @@ var v7 = v6;
 	};
 };
 
-var v8 = v7;
+const v8 = v7;
 
 module.exports =
 {	
