@@ -148,6 +148,58 @@ module.exports =
         	    Memory.Links[link.id] = true;
         	}
     	}
+
+        if(Memory.Rooms == undefined)
+        {
+            Memory.Rooms = 
+            {
+                "E3S24":
+                {
+                    Sources: {}
+                },
+
+                "E4S24":
+                {
+                    Sources: {}
+                }
+            };
+
+            for(let roomName in Memory.Rooms)
+            {
+                if(Game.rooms[roomName] == undefinde)
+                {
+                    continue;
+                }
+
+                const Sources = Game.rooms[roomName].find(FIND_SOURCES);
+                for(let source of Sources)
+                {
+                    let getNumberOfAvailableFieldsFunc = function(pos)
+                        {
+                            const terrain = Game.rooms[pos.roomName].getTerrain();
+                            let num = 0;
+                            for(let x = (pos.x - 1); x <= (pos.x + 1); x++)
+                            {
+                                for(let y = (pos.y - 1); y <= (pos.y + 1); y++)
+                                {
+                                    if(terrain.get(x, y) != TERRAIN_MASK_WALL)
+                                    {
+                                        num ++;
+                                    }
+                                }
+                            }
+
+                            return num;
+                        };
+
+                    Memory.Rooms[roomName].Sources[source.id] = 
+                    {
+                        availableFields: getNumberOfAvailableFieldsFunc(source.pos),
+                        harvesters: {},
+                    };
+                }
+            }
+        }
     
     	//memory cleanup
     	{
@@ -168,11 +220,26 @@ module.exports =
     		        }
     	    	}
     		}
+            for(let roomName in Memory.Rooms)
+            {
+                let Sources = Memory.Rooms[roomName].Sources;
+                for (let idx in Sources)
+                {
+                    for(let hName in Memory.Rooms[roomName].Sources[idx].harvesters)
+                    {
+                        if (Game.creeps[hName] == undefined)
+                        {
+                            delete Memory.Rooms[roomName].Sources[idx].harvesters[hName];
+                        }
+                    }
+                }
+            }
     	}
     	
     	//if(Memory.Links_tmp != undefined) delete Memory.Links_tmp;
 	    //if(Memory.Sources != undefined) delete Memory.Sources;
     	//if(Memory.Towers != undefined) delete Memory.Towers;
     	//if(Memory.Links != undefined) delete Memory.Links;
+        //if(Memory.Rooms != undefined) delete Memory.Rooms;
 	},
 };

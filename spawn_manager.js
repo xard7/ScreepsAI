@@ -3,7 +3,7 @@ const UPGRADER 	= 1;
 const ENGINEER	= 2;
 const BUILDER	= 3;
 const PORTER	= 4;
-const MULTI 	= 5;
+const UNIVERSAL	= 5;
 
 const v1 = 
 [
@@ -19,7 +19,7 @@ const v1 =
 			}
 
 			const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
-			if(numberOfCreeps < minimalNumberOfHarverters - 1)
+			if(numberOfCreeps < minimalNumberOfHarverters)
 			{
 				let sourceId = undefined;
 				for(let idx in Memory.Sources)
@@ -80,7 +80,7 @@ const v1 =
 		}
 	},
 
-	// MULTI
+	// UNIVERSAL
 	{
 		minimalNumberOfCreeps: 0,
 		func: function(Spawner, minimalNumberOfCreeps)
@@ -151,18 +151,45 @@ const v6 = v5;
 		}
 
 		return false;
-	}
+	};
 };
 
 const v7 = v6;
 {
-	v7[MULTI].minimalNumberOfCreeps = 0;
-	v7[MULTI].func = function(Spawner, minimalNumberOfCreeps)
+	v7[HARVESTER].func = function(Spawner, minimalNumberOfCreeps) 
 	{
-		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "multi");
+		let minimalNumberOfHarverters = 0;
+		for(let idx in Memory.Sources)
+		{
+			minimalNumberOfHarverters += Memory.Sources[idx].availableFields;
+		}
+
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "harvester");
+		if(numberOfCreeps < minimalNumberOfHarverters - 1)
+		{
+			let sourceId = undefined;
+			for(let idx in Memory.Sources)
+			{
+				let sH = Object.keys(Memory.Sources[idx].harvesters).length;
+				if(sH < Memory.Sources[idx].availableFields)
+				{
+					sourceId = idx;
+					break;
+				}
+			}
+
+		    return Spawner.spawnCustomCreep("H", "harvester", undefined, {source: sourceId})
+		}
+		return false;
+	};
+	
+	v7[UNIVERSAL].minimalNumberOfCreeps = 0;
+	v7[UNIVERSAL].func = function(Spawner, minimalNumberOfCreeps)
+	{
+		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "universal");
 		if(numberOfCreeps < minimalNumberOfCreeps)
 		{
-			return Spawner.spawnCustomCreep("MM", "multi", "M");
+			return Spawner.spawnCustomCreep("MM", "universal", "M");
 		}
 		return false;
 	};

@@ -114,17 +114,20 @@ module.exports = function()
 
 	Creep.prototype.checkDrop = function()
 	{
+		let ret = {type: CONST.eDropCheck.NONE, id: -1, path: ""}
 		const tombstone = this.pos.findClosestByRange(FIND_TOMBSTONES,
             {
     	        filter: function(t)
     			{
     				let path = this.pos.findPathTo(t);
-    				return (path.length * 1.3 < t.tickToDecay);
+    				return (path.length * 1.1 < t.tickToDecay);
     			}
     		});
 		if(tombstone)
 		{
-			return {type: CONST.eDropCheck.TOMBSTONE, id: tombstone.id};
+			ret.type = CONST.eDropCheck.TOMBSTONE;
+			ret.id = tombstone.id;
+			ret.path = creep.room.findPath(this.pos, tombstone.pos, {serialize: true});
 		}
 		else
 		{
@@ -133,17 +136,19 @@ module.exports = function()
     	        filter: function(r)
     			{
     				let path = this.pos.findPathTo(r);
-    				return (path.length * 1.3 < r.amount);
+    				return (path.length * 1.1 < r.amount);
     			}
     		});
 
 	        if(droppedResource)
 	        {
-	    	    return {type: CONST.eDropCheck.RESOURCE, id : droppedResource.id};
+				ret.type = CONST.eDropCheck.RESOURCE;
+				ret.id = droppedResource.id;
+				ret.path = creep.room.findPath(this.pos, droppedResource.pos, {serialize: true});
 	        }
 	    }
 
-	    return {type: CONST.eDropCheck.NONE, id: -1};
+	    return ret;
 	},
 
 	Creep.prototype.getAndSavePath = function(target)

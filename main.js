@@ -82,7 +82,7 @@ module.exports.loop = function()
 				}
 				break;
 
-				case "multi":
+				case "universal":
 				{
 
 				}
