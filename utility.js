@@ -155,18 +155,20 @@ module.exports =
             {
                 "E3S24":
                 {
-                    Sources: {}
+                    Sources: {},
+                    ThinkingIds: {},
                 },
 
                 "E4S24":
                 {
-                    Sources: {}
+                    Sources: {},
+                    ThinkingIds: {},
                 }
             };
 
             for(let roomName in Memory.Rooms)
             {
-                if(Game.rooms[roomName] == undefinde)
+                if(Game.rooms[roomName] == undefined)
                 {
                     continue;
                 }

@@ -147,7 +147,7 @@ const v6 = v5;
 		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "porter");
 		if(numberOfCreeps < minimalNumberOfPorters)
 		{
-			return Spawner.spawnCustomCreep("B", "porter", "CCCCCCCMMMMM");
+			return Spawner.spawnCustomCreep("P", "porter", "CCCCCCCMMMMM");
 		}
 
 		return false;
@@ -189,7 +189,7 @@ const v7 = v6;
 		const numberOfCreeps = _.sum(Game.creeps, (c) => c.memory.role == "universal");
 		if(numberOfCreeps < minimalNumberOfCreeps)
 		{
-			return Spawner.spawnCustomCreep("MM", "universal", "M");
+			return Spawner.spawnCustomCreep("Uni", "universal", "WCMM");
 		}
 		return false;
 	};

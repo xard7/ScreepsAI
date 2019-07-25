@@ -17,7 +17,7 @@ module.exports =
 
 			//if(false)
 			{ // Extensins, storage, links
-				for(let i = 1; i < 5; i++)
+				for(let i = 1; i < 10; i++)
 				{
 					for(let j = 0; j <= i; j++)
 					{

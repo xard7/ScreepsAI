@@ -4,7 +4,7 @@ require("prototypes")();
 const Utility = require("utility");
 
 const spawnManager = require("spawn_manager");
-const roleCreep = require("behaviors");
+const roleCreep = require("creep.universal");
 
 const roleHarvester = require("creep.harvester");
 const roleUpgrader = require("creep.upgrader");
@@ -17,6 +17,8 @@ const roleLink = require("structure.link");
 module.exports.loop = function()
 {
     Utility.executeMemoryStuff();
+
+    //console.log("ENERGY CAPACITY: " + Game.rooms["E3S24"].energyCapacityAvailable + " ENERGY AVAILABLE: " + Game.rooms["E3S24"].energyAvailable);
 
     const Spawner = Game.spawns["Home"];
 	const spawnFuncs = spawnManager.run[Spawner.room.controller.level - 1];
@@ -84,7 +86,33 @@ module.exports.loop = function()
 
 				case "universal":
 				{
-
+					roleCreep.run(creep);
+				    /*if(creep.pos.roomName != "E4S24")
+				    {
+				        let flag = Game.flags["Scout1"];
+                        creep.moveTo(flag);
+				    }
+				    else
+				    {
+				        let keeperLair = creep.pos.findClosestByPath(FIND_STRUCTURES, 
+				            {
+				                filter:
+                    	        {
+                    	            structureType: STRUCTURE_KEEPER_LAIR
+                    	        }
+				            });
+				        if(keeperLair)
+				        {
+				            if(creep.pos.inRangeTo(keeperLair, 2))
+				            {
+				                creep.attack(keeperLair);
+				            }
+				            else
+				            {
+				                creep.moveTo(keeperLair);
+				            }
+				        }
+				    }*/
 				}
 				break;
 			}

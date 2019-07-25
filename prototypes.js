@@ -2,6 +2,22 @@ module.exports = function()
 {
 	const CONST = require("consts");
 
+	const testWeights = 
+	{
+		"goto_source": 1.0,
+	    "harvest": 1.0,
+
+	    "goto_drop": 0.5,
+	    "pickup_drop": 0.5,
+
+	    "goto_extension": 0.3,
+	    "goto_cargo": 0.4,
+	    "goto_controller": 0.6,
+	    "transfer": 0.0,
+
+	    "goto_flag": 0.0,
+	};
+
 	StructureSpawn.prototype.spawnCustomCreep = function(creepName, roleName, bodyName, opt)
 	{
 		if(this.memory.uniqueCounter == undefined)
@@ -33,6 +49,24 @@ module.exports = function()
 					{
 						body.push(MOVE);
 					}
+					break;
+					
+					case 'A':
+				    {
+						body.push(ATTACK);
+				    }
+					break;
+					
+					case 'R':
+				    {
+						body.push(RANGED_ATTACK);
+				    }
+					break;
+					
+					case 'T':
+				    {
+						body.push(TOUGH);
+				    }
 					break;
 
 					default:
@@ -114,12 +148,18 @@ module.exports = function()
 
 	Creep.prototype.checkDrop = function()
 	{
-		let ret = {type: CONST.eDropCheck.NONE, id: -1, path: ""}
+    	const creep = this;
+		let ret = {type: CONST.eDropCheck.NONE, id: null, path: ""}
 		const tombstone = this.pos.findClosestByRange(FIND_TOMBSTONES,
             {
     	        filter: function(t)
     			{
-    				let path = this.pos.findPathTo(t);
+    				if(Memory.Rooms[creep.room.name].ThinkingIds[t.id] != undefined)
+    				{
+    					return false;
+    				}
+
+    				let path = creep.pos.findPathTo(t);
     				return (path.length * 1.1 < t.tickToDecay);
     			}
     		});
@@ -127,7 +167,7 @@ module.exports = function()
 		{
 			ret.type = CONST.eDropCheck.TOMBSTONE;
 			ret.id = tombstone.id;
-			ret.path = creep.room.findPath(this.pos, tombstone.pos, {serialize: true});
+			ret.path = this.pos.findPathTo(tombstone.pos, {serialize: true});
 		}
 		else
 		{
@@ -135,7 +175,12 @@ module.exports = function()
             {
     	        filter: function(r)
     			{
-    				let path = this.pos.findPathTo(r);
+    				if(Memory.Rooms[creep.room.name].ThinkingIds[r.id] != undefined)
+    				{
+    					return false;
+    				}
+
+    				let path = creep.pos.findPathTo(r);
     				return (path.length * 1.1 < r.amount);
     			}
     		});
@@ -144,21 +189,234 @@ module.exports = function()
 	        {
 				ret.type = CONST.eDropCheck.RESOURCE;
 				ret.id = droppedResource.id;
-				ret.path = creep.room.findPath(this.pos, droppedResource.pos, {serialize: true});
+				ret.path = this.pos.findPathTo(droppedResource.pos, {serialize: true});
 	        }
 	    }
 
 	    return ret;
-	},
+	};
 
-	Creep.prototype.getAndSavePath = function(target)
+	Creep.prototype.checkSource = function(roomName)
 	{
-		const path = this.pos.findPathTo(target, {serialize: true});
-		if(path.length)
+		let ret = {id: null, path: ""};
+		let pathLength = 99999;
+
+		for(const sourceId in Memory.Rooms[roomName].Sources)
 		{
-			this.memory.currentPath = path;
-			return true;
+			const source = Memory.Rooms[roomName].Sources[sourceId];
+			if(Object.keys(source.harvesters).length < source.availableFields)
+			{
+				const sourceObj = Game.getObjectById(sourceId);
+				const path = this.pos.findPathTo(sourceObj);
+				if(pathLength > path.length)
+				{
+					pathLength = path.length;
+					ret.id = sourceId;
+					ret.path = Room.serializePath(path);
+				}
+			}
 		}
-		return false;
-	}
+
+		return ret;
+	};
+
+	Creep.prototype.checkExtension = function()
+	{
+    	const creep = this;
+		let ret = {id: null, path: ""};
+
+		let extension = this.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+			{
+				filter: function(e)
+				{
+					if(Memory.Rooms[creep.room.name].ThinkingIds[e.id] != undefined)
+    				{
+    					return false;
+    				}
+
+				    return e.structureType == STRUCTURE_EXTENSION && e.energy < e.energyCapacity;
+				}
+			});
+
+		if(extension)
+		{
+		    ret.path = this.pos.findPathTo(extension.pos, {serialize: true});
+			ret.id = extension.id;
+		}
+
+		return ret;
+	};
+
+	Creep.prototype.checkCargo = function()
+	{
+		let ret = {id: null, path: ""};
+
+		let cargo = this.pos.findClosestByPath(FIND_MY_STRUCTURES, 
+			{
+				filter: 
+				{
+				    structureType: STRUCTURE_STORAGE,
+				}
+			});
+
+		if(cargo)
+		{
+		    ret.path = this.pos.findPathTo(cargo.pos, {serialize: true});
+			ret.id = cargo.id;
+		}
+
+		return ret;
+	};
+
+	Creep.prototype.checkFlag = function()
+	{
+		let ret = {id: null, path: ""};
+
+		let flag = creep.pos.findClosestByPath(FIND_FLAGS);
+
+		if(flag)
+		{
+		    ret.path = this.pos.findPathTo(flag.pos, {serialize: true});
+			ret.id = flag.id;
+		}
+
+		return ret;
+	};
+
+	Creep.prototype.think = function()
+    {
+    	let currentWeight = this.memory.Behavior.Weight;
+    	let currentState = this.memory.Behavior.State;
+    	let currentId = this.memory.Behavior.Id;
+    	const carryCount = _.sum(this.carry);
+
+    	switch(currentState)
+    	{
+    		case CONST.eState.TRANSFER:
+    		{
+    			if(carryCount == 0)
+    			{
+    				currentWeight = 99999;
+    			}
+    		}
+    		break;
+
+    		case CONST.eState.HARVEST:
+    		case CONST.eState.PICKUP_DROP:
+    		{
+    			if(carryCount > 0)
+    			{
+    				currentWeight = 99999;
+    			}
+    		}
+    		break;
+    	}
+
+    	if(carryCount == this.carryCapacity)
+    	{
+    		const extensionData = this.checkExtension();
+    		if(extensionData.id != null)
+    		{
+	    		const pathLength = Room.deserializePath(extensionData.path).length;
+    			const extensionWeight = testWeights["goto_extension"] * pathLength;
+    			if(extensionWeight < currentWeight)
+    			{
+	    			if(pathLength <= 1)
+	    			{
+	    				currentWeight = testWeights["transfer"] * pathLength;
+	    				currentState = CONST.eState.TRANSFER;
+	    			}
+	    			else
+	    			{
+	    				currentWeight = extensionWeight;
+	    				currentState = CONST.eState.GOTO_EXTENSION;
+	    			}
+	    			currentId = extensionData.id;
+	    		}
+    		}
+
+	    	const cargoData = this.checkCargo();
+	    	if(cargoData.id != null)
+	    	{
+	    		const pathLength = Room.deserializePath(cargoData.path).length;
+	    		const cargoWeight = testWeights["goto_cargo"] * pathLength;
+	    		if(cargoWeight < currentWeight)
+	    		{
+		    		if(pathLength <= 1)
+		    		{
+			    		currentWeight = testWeights["transfer"] * pathLength;
+			    		currentState = CONST.eState.TRANSFER;
+		    		}
+		    		else
+		    		{
+						currentWeight = cargoWeight;
+		    			currentState = CONST.eState.GOTO_CARGO;
+		    		}
+		    		currentId = cargoData.id;
+	    		}
+	    	}
+    	}
+    	else
+    	{
+	    	/*const dropData = this.checkDrop();
+	    	if(dropData.type != CONST.eDropCheck.NONE)
+	    	{
+		    	const pathLength = Room.deserializePath(dropData.path).length;
+	    		const dropWeight = testWeights["goto_drop"] * pathLength;
+	    		if(dropWeight < currentWeight)
+	    		{
+		    		if(pathLength <= 1)
+		    		{
+				    	currentWeight = testWeights["pickup_drop"] * pathLength;
+				    	currentState = CONST.eState.PICKUP_DROP;
+		    		}
+		    		else
+		    		{
+			    		currentWeight = testWeights["goto_drop"] * pathLength;
+			    		currentState = CONST.eState.GOTO_DROP;
+			    	}
+			    	currentId = dropData.id;
+			    }
+	    	}*/
+
+	    	const harvestData = this.checkSource(this.room.name);
+	    	if(harvestData.id != null)
+	    	{
+	    		const pathLength = Room.deserializePath(harvestData.path).length;
+	    		const harvestWeight = testWeights["goto_source"] * pathLength;
+	    		if(harvestWeight < currentWeight)
+	    		{
+		    		if(pathLength <= 1)
+		    		{
+			    		currentWeight = testWeights["harvest"] * pathLength;
+			    		currentState = CONST.eState.HARVEST;
+		    		}
+		    		else
+		    		{
+						currentWeight = harvestWeight;
+		    			currentState = CONST.eState.GOTO_SOURCE;
+		    		}
+		    		currentId = harvestData.id;
+	    		}
+	    	}
+	    }
+    	
+    	//let flagData = 0;
+    	//let flagWeight = 99999;
+
+    	let isDirty = false;
+    	if(currentState != this.memory.Behavior.State)
+    	{
+			this.memory.Behavior =
+			{
+				State: currentState,
+				Weight: currentWeight,
+				Id: currentId,
+			};
+
+			isDirty = true;
+    	}
+
+        return isDirty;
+    };
 };
