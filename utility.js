@@ -1,5 +1,40 @@
 module.exports = 
 {
+    printDebug: function(data, header = "")
+    {
+        let reFunc = function(d, level)
+            {
+                let tabs = "";
+                for(let i = 0; i < level; i++)
+                {
+                    tabs += "   ";
+                }
+
+                if(typeof(d) == "object")
+                {
+                    for(let c in d)
+                    {
+                        if(typeof(d[c]) == "object")
+                        {
+                            console.log(tabs + c + ":");
+                            reFunc(d[c], level + 1);
+                        }
+                        else
+                        {
+                            console.log(tabs + c + ": " + d[c]);
+                        }
+                    }
+                }
+                else
+                {
+                    console.log(tabs + header + ": " + d);
+                }
+            };
+
+        console.log("Print Debug");
+        reFunc(data, 1, reFunc);
+    },
+
 	getNumberOfAvailableFields: function(pos)
 	{
 		const terrain = Game.rooms[pos.roomName].getTerrain();

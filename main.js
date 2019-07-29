@@ -86,33 +86,23 @@ module.exports.loop = function()
 
 				case "universal":
 				{
-					roleCreep.run(creep);
-				    /*if(creep.pos.roomName != "E4S24")
-				    {
-				        let flag = Game.flags["Scout1"];
-                        creep.moveTo(flag);
-				    }
-				    else
-				    {
-				        let keeperLair = creep.pos.findClosestByPath(FIND_STRUCTURES, 
-				            {
-				                filter:
-                    	        {
-                    	            structureType: STRUCTURE_KEEPER_LAIR
-                    	        }
-				            });
-				        if(keeperLair)
-				        {
-				            if(creep.pos.inRangeTo(keeperLair, 2))
-				            {
-				                creep.attack(keeperLair);
-				            }
-				            else
-				            {
-				                creep.moveTo(keeperLair);
-				            }
-				        }
-				    }*/
+					const testWeights = 
+					{
+						"goto_source": 10.0,
+					    "harvest": 10.0,
+
+					    "goto_drop": 0.5,
+					    "pickup_drop": 0.0,
+
+					    "goto_extension": 0.3,
+					    "goto_cargo": 0.4,
+					    "goto_controller": 10.6,
+					    "transfer": 0.0,
+
+					    "goto_flag": 0.0,
+					};
+
+					roleCreep.run(creep, testWeights);
 				}
 				break;
 			}

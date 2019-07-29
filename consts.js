@@ -21,11 +21,4 @@ module.exports =
 
 		LAST: 12,
 	},
-
-	eDropCheck:
-	{
-		NONE: 0,
-		TOMBSTONE: 1,
-		RESOURCE: 2,
-	}
 };

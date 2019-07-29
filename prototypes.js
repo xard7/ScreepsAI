@@ -1,22 +1,7 @@
 module.exports = function()
 {
 	const CONST = require("consts");
-
-	const testWeights = 
-	{
-		"goto_source": 1.0,
-	    "harvest": 1.0,
-
-	    "goto_drop": 0.5,
-	    "pickup_drop": 0.5,
-
-	    "goto_extension": 0.3,
-	    "goto_cargo": 0.4,
-	    "goto_controller": 0.6,
-	    "transfer": 0.0,
-
-	    "goto_flag": 0.0,
-	};
+	const Utility = require("utility");
 
 	StructureSpawn.prototype.spawnCustomCreep = function(creepName, roleName, bodyName, opt)
 	{
@@ -149,45 +134,36 @@ module.exports = function()
 	Creep.prototype.checkDrop = function()
 	{
     	const creep = this;
-		let ret = {type: CONST.eDropCheck.NONE, id: null, path: ""}
+		let ret = {id: null, path: ""}
 		const tombstone = this.pos.findClosestByRange(FIND_TOMBSTONES,
-            {
-    	        filter: function(t)
-    			{
-    				if(Memory.Rooms[creep.room.name].ThinkingIds[t.id] != undefined)
+			{
+				filter: function(t)
+				{
+					if(Memory.Rooms[creep.room.name].ThinkingIds[t.id] != undefined)
     				{
     					return false;
     				}
 
-    				let path = creep.pos.findPathTo(t);
-    				return (path.length * 1.1 < t.tickToDecay);
-    			}
-    		});
+					return _.sum(t.store) > 0;
+				}
+			});
 		if(tombstone)
 		{
-			ret.type = CONST.eDropCheck.TOMBSTONE;
 			ret.id = tombstone.id;
 			ret.path = this.pos.findPathTo(tombstone.pos, {serialize: true});
 		}
 		else
 		{
 			const droppedResource = this.pos.findClosestByRange(FIND_DROPPED_RESOURCES,
-            {
-    	        filter: function(r)
-    			{
-    				if(Memory.Rooms[creep.room.name].ThinkingIds[r.id] != undefined)
-    				{
-    					return false;
-    				}
-
-    				let path = creep.pos.findPathTo(r);
-    				return (path.length * 1.1 < r.amount);
-    			}
-    		});
+				{
+					filter: function(d)
+					{
+						return Memory.Rooms[creep.room.name].ThinkingIds[d.id] == undefined;
+					}
+				});
 
 	        if(droppedResource)
 	        {
-				ret.type = CONST.eDropCheck.RESOURCE;
 				ret.id = droppedResource.id;
 				ret.path = this.pos.findPathTo(droppedResource.pos, {serialize: true});
 	        }
@@ -283,7 +259,7 @@ module.exports = function()
 		return ret;
 	};
 
-	Creep.prototype.think = function()
+	Creep.prototype.think = function(roleWeights)
     {
     	let currentWeight = this.memory.Behavior.Weight;
     	let currentState = this.memory.Behavior.State;
@@ -302,6 +278,13 @@ module.exports = function()
     		break;
 
     		case CONST.eState.HARVEST:
+    		{
+    			if(carryCount == this.carryCapacity)
+    			{
+    				currentWeight = 99999;
+    			}
+    		}
+
     		case CONST.eState.PICKUP_DROP:
     		{
     			if(carryCount > 0)
@@ -312,18 +295,20 @@ module.exports = function()
     		break;
     	}
 
+	    Utility.printDebug(currentWeight, "currentWeight");
+
     	if(carryCount == this.carryCapacity)
     	{
     		const extensionData = this.checkExtension();
     		if(extensionData.id != null)
     		{
 	    		const pathLength = Room.deserializePath(extensionData.path).length;
-    			const extensionWeight = testWeights["goto_extension"] * pathLength;
+    			const extensionWeight = roleWeights["goto_extension"] * pathLength;
     			if(extensionWeight < currentWeight)
     			{
 	    			if(pathLength <= 1)
 	    			{
-	    				currentWeight = testWeights["transfer"] * pathLength;
+	    				currentWeight = roleWeights["transfer"] * pathLength;
 	    				currentState = CONST.eState.TRANSFER;
 	    			}
 	    			else
@@ -339,12 +324,12 @@ module.exports = function()
 	    	if(cargoData.id != null)
 	    	{
 	    		const pathLength = Room.deserializePath(cargoData.path).length;
-	    		const cargoWeight = testWeights["goto_cargo"] * pathLength;
+	    		const cargoWeight = roleWeights["goto_cargo"] * pathLength;
 	    		if(cargoWeight < currentWeight)
 	    		{
 		    		if(pathLength <= 1)
 		    		{
-			    		currentWeight = testWeights["transfer"] * pathLength;
+			    		currentWeight = roleWeights["transfer"] * pathLength;
 			    		currentState = CONST.eState.TRANSFER;
 		    		}
 		    		else
@@ -358,37 +343,40 @@ module.exports = function()
     	}
     	else
     	{
-	    	/*const dropData = this.checkDrop();
-	    	if(dropData.type != CONST.eDropCheck.NONE)
+	    	const dropData = this.checkDrop();
+	    	if(dropData.id != null)
 	    	{
 		    	const pathLength = Room.deserializePath(dropData.path).length;
-	    		const dropWeight = testWeights["goto_drop"] * pathLength;
+	    		const dropWeight = roleWeights["goto_drop"] * pathLength;
+	    		//Utility.printDebug(dropWeight, "dropWeight");
 	    		if(dropWeight < currentWeight)
 	    		{
 		    		if(pathLength <= 1)
 		    		{
-				    	currentWeight = testWeights["pickup_drop"] * pathLength;
+				    	currentWeight = roleWeights["pickup_drop"] * pathLength;
 				    	currentState = CONST.eState.PICKUP_DROP;
 		    		}
 		    		else
 		    		{
-			    		currentWeight = testWeights["goto_drop"] * pathLength;
+			    		currentWeight = roleWeights["goto_drop"] * pathLength;
 			    		currentState = CONST.eState.GOTO_DROP;
 			    	}
 			    	currentId = dropData.id;
+			    	console.log(currentId);
 			    }
-	    	}*/
+	    	}
 
 	    	const harvestData = this.checkSource(this.room.name);
 	    	if(harvestData.id != null)
 	    	{
 	    		const pathLength = Room.deserializePath(harvestData.path).length;
-	    		const harvestWeight = testWeights["goto_source"] * pathLength;
+	    		const harvestWeight = roleWeights["goto_source"] * pathLength;
+	    		//Utility.printDebug(harvestWeight, "harvestWeight");
 	    		if(harvestWeight < currentWeight)
 	    		{
 		    		if(pathLength <= 1)
 		    		{
-			    		currentWeight = testWeights["harvest"] * pathLength;
+			    		currentWeight = roleWeights["harvest"] * pathLength;
 			    		currentState = CONST.eState.HARVEST;
 		    		}
 		    		else
@@ -400,9 +388,6 @@ module.exports = function()
 	    		}
 	    	}
 	    }
-    	
-    	//let flagData = 0;
-    	//let flagWeight = 99999;
 
     	let isDirty = false;
     	if(currentState != this.memory.Behavior.State)
